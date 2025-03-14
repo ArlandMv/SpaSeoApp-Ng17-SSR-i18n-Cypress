@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -6,6 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   template: `
     <app-nav></app-nav>
     <section class="hero">
+      <h1>{{ 'WELCOME' | translate }}</h1>
       <div class="content">
         <h1>Empower Your Business with Tailored Development Solutions</h1>
         <p>
@@ -179,6 +181,11 @@ export class AppComponent {
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
     });
+
+    const platform = inject(PLATFORM_ID);
+    isPlatformBrowser(platform)
+      ? console.log('platform: browser')
+      : console.log('platform: server');
   }
 
   onSubmit() {

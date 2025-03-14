@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav',
@@ -11,37 +12,48 @@ import { Component } from '@angular/core';
         <a mat-button routerLink="/services">Services</a>
         <a mat-button routerLink="/contact">Contact</a>
       </nav>
-      <button mat-button (click)="changeLanguage('en')">EN</button>
-      <button mat-button (click)="changeLanguage('es')">ES</button>
+      <select name="locale" id="locale" (change)="changeLanguage($event)">
+        <option *ngFor="let locale of locales" [value]="locale.value">
+          {{ locale.name }}
+        </option>
+      </select>
+      <!--button mat-button (click)="changeLanguage('en')">EN</button>
+      <button mat-button (click)="changeLanguage('es')">ES</button-->
     </mat-toolbar>
   `,
-  styles: [`
-    .mat-toolbar {
-      display: flex;
-      justify-content: space-between;
-      padding: 0 16px;
-    }
-    .logo {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-    .spacer {
-      flex: 1;
-    }
-    nav a {
-      margin-right: 12px;
-      font-weight: 500;
-    }
-  `]
+  styles: [
+    `
+      .mat-toolbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px;
+      }
+      .logo {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      .spacer {
+        flex: 1;
+      }
+      nav a {
+        margin-right: 12px;
+        font-weight: 500;
+      }
+    `,
+  ],
 })
 export class NavComponent {
-  public locales = [{value: "es", name:"Español"}, {value: "en", name:"English"}]
-  languages = ['en', 'es']; // Example for i18n
-  selectedLanguage = 'en';
+  public locales = [
+    { value: 'es', name: 'Español' },
+    { value: 'en', name: 'English' },
+  ];
 
-  changeLanguage(lang: string) {
-    this.selectedLanguage = lang;
-    console.log(`Language changed to: ${lang}`);
-    // Implement actual i18n switching logic
+  constructor(private translateService: TranslateService) {}
+
+  changeLanguage(event: Event) {
+    const changeEvent = event.target as HTMLInputElement;
+    this.translateService.use(changeEvent.value);
+
+    console.log('Changed to Language:', changeEvent.value);
   }
 }
