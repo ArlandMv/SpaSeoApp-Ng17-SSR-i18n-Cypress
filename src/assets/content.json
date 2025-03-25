@@ -1,0 +1,87 @@
+{
+  "heroSection": {
+    "heroTitle": "Empowering Solopreneurs & Businesses with Tailored Web Solutions",
+    "tagline": "Specialized Front-End, Full-Stack, and Consulting Services to Drive Your Success.",
+    "callToAction": "Schedule a Free Consultation",
+    "optionalHeroImage": "A clean, modern design showing code snippets, app interfaces, or a professional workspace."
+  },
+  "servicesSection": {
+    "sectionTitle": "Our Specialized Services",
+    "services": [
+      {
+        "icon": "web",
+        "title": "Front-End Landing Pages for Solopreneurs",
+        "description": "Utilizing Jamstack technologies like Angular, we create SEO-friendly landing pages with simple contact forms, perfect for professionals offering up to three service types. Capture leads and showcase your offerings effectively."
+      },
+      {
+        "icon": "developer_mode",
+        "title": "Custom Applications",
+        "description": "We develop robust full-stack applications tailored to your unique business needs. Leveraging Angular, Spring Boot, databases, and reporting tools, we build scalable and efficient solutions."
+      },
+      {
+        "icon": "support_agent",
+        "title": "Consulting Services",
+        "description": "Get expert consulting in Front-End, Back-End, and Salesforce Apex development. We offer competitive hourly rates to help you overcome technical challenges and optimize your projects."
+      }
+    ]
+  },
+  "technologySection": {
+    "sectionTitle": "Our Expertise & Technologies",
+    "description": "We specialize in modern technologies to deliver high-quality solutions.",
+    "technologies": [
+      "Angular",
+      "Spring Boot",
+      "Jamstack",
+      "Databases (e.g., PostgreSQL, MySQL)",
+      "Reporting Tools",
+      "Salesforce Apex"
+    ]
+  },
+  "whyChooseMeSection": {
+    "sectionTitle": "Why Choose Me?",
+    "points": [
+      {
+        "title": "Tailored Solutions",
+        "description": "Focus on your specific needs, whether it's a landing page or a complex application."
+      },
+      {
+        "title": "Expertise & Experience",
+        "description": "Deep knowledge in modern web technologies and a commitment to quality."
+      },
+      {
+        "title": "Direct Communication",
+        "description": "Working directly with you ensures clear understanding and efficient development."
+      },
+      {
+        "title": "Competitive Rates",
+        "description": "Providing high-value services at competitive hourly or project-based rates."
+      }
+    ]
+  },
+  "contactSection": {
+    "sectionTitle": "Let's Discuss Your Project",
+    "contactForm": {
+      "fields": [
+        "Name",
+        "Email",
+        "Project Description",
+        {
+          "name": "Service of Interest",
+          "type": "dropdown",
+          "options": ["Landing Page", "Custom App", "Consulting"]
+        }
+      ],
+      "submitButton": "Submit"
+    },
+    "contactInformation": {
+      "email": "your-email@example.com",
+      "phone": "your-phone-number",
+      "linkedin": "your-linkedin-profile-url"
+    },
+    "optional": "Calendly or similar service integration"
+  },
+  "footer": {
+    "copyright": "© [Year] Your Company Name. All rights reserved.",
+    "links": ["Privacy Policy", "Terms of Service", "Sitemap"]
+  }
+}
