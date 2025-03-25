@@ -87,10 +87,9 @@ git commit -m "test: add Cypress test for SEO meta validation"
 git commit -m "fix: improve SSR hydration for faster initial load"
 git commit -m "docs: update README with deployment instructions"
 ```
-/*
+<!--
 npm install @ngx-translate/core @ngx-translate/http-loader
 
-*/
 ways to make the translate available:
 
 1-TranslateModule
@@ -112,4 +111,4 @@ TranslateModule.forRoot({
         deps: [HttpClient]
       }
     })
-*/
+-->

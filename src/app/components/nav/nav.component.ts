@@ -44,8 +44,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class NavComponent {
   public locales = [
-    { value: 'es', name: 'Español' },
     { value: 'en', name: 'English' },
+    { value: 'es', name: 'Español' },
   ];
 
   constructor(private translateService: TranslateService) {}

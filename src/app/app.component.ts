@@ -1,39 +1,50 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  OnInit,
+   inject, PLATFORM_ID,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+
+export interface Service {
+  icon: string;
+  title: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-root',
   template: `
     <app-nav></app-nav>
-    <section class="hero">
-      <h1>{{ 'WELCOME' | translate }}</h1>
+    <section class="hero-section background1">
       <div class="content">
-        <h1>Empower Your Business with Tailored Development Solutions</h1>
+        <h1>{{ 'HERO_TITLE' | translate }}</h1>
         <p>
-          Specializing in Front-End Landing Pages, Custom Applications, and
-          Expert Consulting Services
+          {{ 'HERO_TAGLINE' | translate }}
         </p>
-        <button mat-raised-button color="primary" routerLink="/contact">
-          Get Started
+        <button mat-raised-button color="primary">
+          {{ 'HERO_CALL_TO_ACTION' | translate }}
         </button>
       </div>
     </section>
 
-    <div class="services-grid">
-      <mat-card *ngFor="let service of services">
+    <div class="services-section">
+      <mat-card *ngFor="let service of translatedServices">
         <mat-icon>{{ service.icon }}</mat-icon>
-        <h3>{{ service.title }}</h3>
-        <p>{{ service.description }}</p>
+        <h3>{{ service.title | translate }}</h3>
+        <p>{{ service.description | translate }}</p>
       </mat-card>
     </div>
 
-    <section class="contact-section">
+    <section class="contact-section background1">
       <mat-card>
-        <h2>Contact Me</h2>
+        <h2>{{ 'CONTACT_SECTION_TITLE' | translate }}</h2>
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <mat-form-field>
-            <mat-label>Name</mat-label>
+            <mat-label>{{ 'CONTACT_LABEL_NAME' | translate }}</mat-label>
             <input matInput formControlName="name" required />
             <mat-error
               *ngIf="
@@ -41,12 +52,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
                 contactForm.get('name')?.touched
               "
             >
-              Name is required
+              {{ 'CONTACT_ERROR_NAME_REQUIRED' | translate }}
             </mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Email</mat-label>
+            <mat-label>{{ 'CONTACT_LABEL_EMAIL' | translate }}</mat-label>
             <input matInput formControlName="email" type="email" required />
             <mat-error
               *ngIf="
@@ -54,7 +65,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
                 contactForm.get('email')!.touched
               "
             >
-              Email is required
+              {{ 'CONTACT_ERROR_EMAIL_REQUIRED' | translate }}
             </mat-error>
             <mat-error
               *ngIf="
@@ -62,19 +73,33 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
                 contactForm.get('email')!.touched
               "
             >
-              Please enter a valid email
+              {{ 'CONTACT_ERROR_EMAIL_INVALID' | translate }}
             </mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Message</mat-label>
-            <textarea matInput formControlName="message" required></textarea>
+            <mat-label>{{ 'CONTACT_LABEL_SERVICE' | translate }}</mat-label>
+            <mat-select formControlName="service" required>
+              <mat-option
+                *ngFor="let option of serviceOptions"
+                [value]="option.value"
+              >
+                {{ option.translationKey | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>{{
+              'CONTACT_LABEL_PROJECT_DESCRIPTION' | translate
+            }}</mat-label>
+            <input matInput formControlName="message" type="text" required />
             <mat-error
               *ngIf="
                 contactForm.get('message')?.hasError('required') &&
                 contactForm.get('message')?.touched
               "
-              >Message is required
+              >{{ 'CONTACT_ERROR_PROJECT_DESCRIPTION_GUIDANCE' | translate }}
             </mat-error>
           </mat-form-field>
 
@@ -84,28 +109,31 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
             type="submit"
             [disabled]="contactForm.invalid"
           >
-            Send Message
+            {{ 'CONTACT_FORM_SUBMIT_BUTTON' | translate }}
           </button>
         </form>
       </mat-card>
     </section>
 
     <footer>
-      <p>© 2025 Arland Michelena Villegas</p>
+      <p>©{{ year }} {{ 'FOOTER_COPYRIGHT' | translate }}</p>
     </footer>
   `,
   styles: [
     `
-      .hero {
+      .background1 {
+        background-color: #f5f5f5;
+      }
+
+      .hero-section {
         text-align: center;
         padding: 50px 20px;
-        background-color: #f5f5f5;
       }
       .hero .content {
         max-width: 800px;
         margin: 0 auto;
       }
-      .services-grid {
+      .services-section {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -128,7 +156,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
         justify-content: center;
         align-items: center;
         padding: 40px 20px;
-        background-color: #f8f8f8;
       }
       .contact-section mat-card {
         width: 100%;
@@ -150,49 +177,71 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     `,
   ],
 })
-export class AppComponent {
-  title = 'ArlandMV Projects';
-  services = [
+export class AppComponent implements OnInit, OnDestroy {
+  private fb = inject(FormBuilder);
+  private translate = inject(TranslateService);
+  contactForm: FormGroup = this.fb.group({});
+  translatedServices: Service[] = [];
+
+  isBrowser: boolean;
+  year: number | undefined;
+  serviceOptions = [
     {
-      icon: 'web',
-      title: 'Front-End Landing Pages for Solopreneurs',
-      description:
-        'Utilizing Jamstack technologies like Angular to create SEO-friendly landing pages with simple contact forms, tailored for professionals offering three types of services.',
+      value: 'Front-End Landing Page Service',
+      translationKey: 'SERVICES_SERVICE_1_TITLE',
+    },    
+    {
+      value: 'Custom / Full Stack Service',
+      translationKey: 'CONTACT_SERVICE_OPTION_2',
     },
     {
-      icon: 'developer_mode',
-      title: 'Custom Applications',
-      description:
-        'Developing full-stack applications using Angular, Spring Boot, databases, and reporting tools to meet your unique business requirements.',
+      value: 'Consulting Services',
+      translationKey: 'CONTACT_SERVICE_OPTION_3',
     },
     {
-      icon: 'support_agent',
-      title: 'Consulting Services',
-      description:
-        'Providing expert consulting in Front-End, Back-End, and Salesforce Apex development, available at competitive hourly rates.',
+      value: 'First Time Free Consultation Services',
+      translationKey: 'CONTACT_SERVICE_OPTION_4',
     },
   ];
 
-  contactForm: FormGroup;
-
-  constructor(private fb: FormBuilder) {
+  constructor() {
+    const platform = inject(PLATFORM_ID);
+    this.isBrowser = isPlatformBrowser(platform);
+    this.createContactForm();
+  }
+  
+  ngOnInit(): void {
+    console.log('ngOnInit called');
+    this.year = new Date().getFullYear();
+    this.translate.get(['services']).subscribe((translation) => {
+      this.translatedServices = translation['services'];
+    });
+  }
+  
+  private createContactForm() {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      service: ['First Time Free Consultation Services', Validators.required],
       message: ['', Validators.required],
-    });
+    });  
+  } 
 
-    const platform = inject(PLATFORM_ID);
-    isPlatformBrowser(platform)
-      ? console.log('platform: browser')
-      : console.log('platform: server');
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      console.log('ngAfterViewInit called');
+    }
   }
 
   onSubmit() {
     if (this.contactForm.valid) {
       const formData = this.contactForm.value;
       console.log('Form Data:', formData);
-      // Implement your form submission logic here
+      // Implement form submission logic here
     }
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy called:', new Date());
   }
 }

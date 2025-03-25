@@ -1,3 +1,58 @@
 {
-  "WELCOME": "Bienvenido"
+  "HERO_TITLE": "Potenciamos Solopreneurs y Negocios con Soluciones Web Personalizadas",
+  "HERO_TAGLINE": "Servicios Especializados de Front-End, Full-Stack y Consultoría para Impulsar su Éxito.",
+  "HERO_CALL_TO_ACTION": "Solicite una Consulta Gratuita",
+  "HERO_OPTIONAL_IMAGE": "Un diseño limpio y moderno que muestra fragmentos de código, interfaces de aplicaciones o un espacio de trabajo profesional.",
+  "SERVICES_SECTION_TITLE": "Nuestros Servicios Especializados",
+  "services": [
+    {
+      "icon": "web",      
+      "title": "Landing Pages Front-End para Solopreneurs",
+      "description": "Utilizando tecnologías Jamstack como Angular, creamos landing pages optimizadas para SEO con formularios de contacto sencillos, ideales para profesionales que ofrecen hasta tres tipos de servicios. Capture leads y presente sus ofertas de manera efectiva."
+    },
+    {
+      "icon": "developer_mode",
+      "title": "Aplicaciones Personalizadas",
+      "description": "Desarrollamos aplicaciones full-stack robustas adaptadas a sus necesidades comerciales únicas. Aprovechando Angular, Spring Boot, bases de datos y herramientas de informes, construimos soluciones escalables y eficientes."
+    },
+    {
+      "icon": "support_agent",
+      "title": "Servicios de Consultoría",
+      "description": "Obtenga consultoría experta en desarrollo Front-End, Back-End y Salesforce Apex. Ofrecemos tarifas por hora competitivas para ayudarle a superar desafíos técnicos y optimizar sus proyectos."
+    }
+  ],
+  "TECHNOLOGY_SECTION_TITLE": "Nuestra Experiencia y Tecnologías",
+  "TECHNOLOGY_SECTION_DESCRIPTION": "Nos especializamos en tecnologías modernas para ofrecer soluciones de alta calidad.",
+  "TECHNOLOGY_TECHNOLOGIES": "Angular, Spring Boot, Jamstack, Bases de datos (ej., PostgreSQL, MySQL), Herramientas de Informes, Salesforce Apex",
+  "WHY_CHOOSE_ME_SECTION_TITLE": "¿Por Qué Elegirnos?",
+  "WHY_CHOOSE_ME_POINT_1_TITLE": "Soluciones Personalizadas",
+  "WHY_CHOOSE_ME_POINT_1_DESCRIPTION": "Nos enfocamos en sus necesidades específicas, ya sea una landing page o una aplicación compleja.",
+  "WHY_CHOOSE_ME_POINT_2_TITLE": "Experiencia y Conocimiento",
+  "WHY_CHOOSE_ME_POINT_2_DESCRIPTION": "Poseemos un profundo conocimiento en tecnologías web modernas y un compromiso con la calidad.",
+  "WHY_CHOOSE_ME_POINT_3_TITLE": "Comunicación Directa",
+  "WHY_CHOOSE_ME_POINT_3_DESCRIPTION": "Trabajar directamente con usted asegura una comprensión clara y un desarrollo eficiente.",
+  "WHY_CHOOSE_ME_POINT_4_TITLE": "Tarifas Competitivas",
+  "WHY_CHOOSE_ME_POINT_4_DESCRIPTION": "Proporcionamos servicios de alto valor a tarifas por hora o por proyecto competitivas.",
+  "CONTACT_SECTION_TITLE": "Hablemos de su Proyecto",
+  "CONTACT_LABEL_NAME": "Nombre Completo",
+  "CONTACT_LABEL_EMAIL": "Correo Electrónico",
+  "CONTACT_LABEL_PROJECT_DESCRIPTION": "Descripción del Proyecto",
+  "CONTACT_LABEL_SERVICE": "Servicio",
+  "CONTACT_SERVICE_OPTION_1": "Servicio de Landing Page Front-End",
+  "CONTACT_SERVICE_OPTION_2": "Servicio Personalizado / Full Stack",
+  "CONTACT_SERVICE_OPTION_3": "Servicios de Consultoría",
+  "CONTACT_SERVICE_OPTION_4": "Servicios de Consulta Gratuita por Primera Vez",
+  "CONTACT_FORM_SUBMIT_BUTTON": "Enviar Solicitud",
+  "CONTACT_INFORMATION_EMAIL": "su-correo@ejemplo.com",
+  "CONTACT_INFORMATION_PHONE": "su-numero-de-telefono",
+  "CONTACT_INFORMATION_LINKEDIN": "su-perfil-de-linkedin-url",
+  "CONTACT_OPTIONAL": "Integración con Calendly o servicio similar",
+  "FOOTER_COPYRIGHT": "Arland Michelena Villegas. Todos los derechos reservados.",
+  "FOOTER_LINKS": "Política de Privacidad, Términos de Servicio, Mapa del Sitio",
+  "CONTACT_ERROR_NAME_REQUIRED": "El nombre es obligatorio",
+  "CONTACT_ERROR_EMAIL_REQUIRED": "El correo electrónico es obligatorio",
+  "CONTACT_ERROR_EMAIL_INVALID": "Por favor, introduce un correo electrónico válido",
+  "CONTACT_ERROR_SERVICE_REQUIRED": "El servicio es obligatorio",
+  "CONTACT_ERROR_MESSAGE_REQUIRED": "El mensaje es obligatorio",
+  "CONTACT_ERROR_PROJECT_DESCRIPTION_GUIDANCE": "Por favor, proporciona una breve descripción de tu proyecto. Incluye detalles sobre tus objetivos, las funcionalidades deseadas, cualquier tecnología específica que prefieras y tu cronograma."
 }
