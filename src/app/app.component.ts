@@ -22,7 +22,7 @@ export interface Service {
   template: `
     <app-nav (sectionClick)="onSectionClick($event)"></app-nav>
     <section class="hero-section background1">
-      <div class="content">
+      <div class="content">  
         <h1>{{ 'HERO_TITLE' | translate }}</h1>
         <p>
           {{ 'HERO_TAGLINE' | translate }}
@@ -33,23 +33,33 @@ export interface Service {
       </div>
     </section>
 
-    <div id="services-section" class="services-section">
-      <mat-card *ngFor="let service of translatedServices">
-        <mat-icon>{{ service.icon }}</mat-icon>
-        <h3>{{ service.title | translate }}</h3>
-        <p>{{ service.description | translate }}</p>
-      </mat-card>
+    <div id="services-section" class="services-section"> 
+      <mat-card *ngFor="let i of [1, 2, 3]"> 
+        <mat-icon>
+          {{ 'SERVICES_ICON_' + i | translate }}
+        </mat-icon> 
+        <h3>{{ 'SERVICES_TITLE_' + i | translate }}</h3> 
+        <p>{{ 'SERVICES_DESCRIPTION_' + i | translate }}</p> 
+      </mat-card> 
     </div>
 
-    <div id="about-section" class="about-section">
-      <mat-card>
-        <h2 class="about-me-title">About Me</h2>
-        <p class="about-me-text">
-          I am a passionate full-stack developer with experience in creating web
-          applications. I offer several services like custom development,
-          landing pages, and consulting.
-        </p>
-      </mat-card>
+     <div id="about-section" class="about-section">
+        <mat-card>
+            <h2 class="about-me-title">{{ 'ABOUT_ME_SECTION_TITLE' | translate }}</h2>
+            <p class="about-me-text">{{ 'ABOUT_ME_SECTION_DESCRIPTION' | translate }}</p>
+            <p class="about-me-text">{{ 'ABOUT_ME_SECTION_EXPERTISE' | translate }}</p>
+             <div class="why-choose-me-section">
+                <h3>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME' | translate }}</h3>
+                <ul>
+                    <li>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_1' | translate }}</li>
+                    <li>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_2' | translate }}</li>
+                    <li>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_3' | translate }}</li>
+                </ul>
+            </div>
+        </mat-card>
+    </div>
+    <div id="technologies-section">
+      
     </div>
 
     <section id="contact-section" class="contact-section background1">
@@ -188,6 +198,15 @@ export interface Service {
         margin-top: 0;
         margin-bottom: 20px;
         font-size: 2rem;
+      }
+       .why-choose-me-section {
+        margin-top: 20px;
+        
+      }
+
+      .why-choose-me-section ul {
+        list-style-type: disc;
+        margin-left: 20px;
       }
       .about-me-text {
         margin-top: 0;
