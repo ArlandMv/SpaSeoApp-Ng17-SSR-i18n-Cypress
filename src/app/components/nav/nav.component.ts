@@ -7,30 +7,28 @@ import { TranslateService } from '@ngx-translate/core';
     <mat-toolbar color="primary">
       <span class="logo">🌐 Software Services</span>
       <span class="spacer"></span>
-            <nav>
-        <a mat-button (click)="goToSection('services-section')">services</a>
-        <a mat-button (click)="goToSection('about-section')">about</a>
+      <nav>
+        <a mat-button data-cy="services-link" (click)="goToSection('services-section')">services</a>
+        <a mat-button data-cy="about-link" (click)="goToSection('about-section')">about</a>
         <a
           mat-raised-button
+          data-cy="contact-link"
           class="nav-link"
           color="accent"
           (click)="goToSection('contact-section')"
-          >contact</a>
-        
+        >contact</a>
       </nav>
       <select
         class="language-select"
+        data-cy="language-select"
         name="locale"
         id="locale"
         (change)="changeLanguage($event)"
       >
-        <option *ngFor="let locale of locales" [value]="locale.value">
+        <option *ngFor="let locale of locales" [value]="locale.value" [attr.data-cy]="'locale-option-' + locale.value">
           {{ locale.name }}
         </option>
       </select>
-
-      <!--button mat-button (click)="changeLanguage('en')">EN</button>
-      <button mat-button (click)="changeLanguage('es')">ES</button-->
     </mat-toolbar>
   `,
   styles: [
@@ -42,7 +40,7 @@ import { TranslateService } from '@ngx-translate/core';
         justify-content: space-between;
         padding: 0 16px;
         margin-inline: auto;
-        max-width: 1200px;
+        max-width: auto;
         position: sticky;
         top: 0;
         z-index: 100;
@@ -93,8 +91,7 @@ export class NavComponent {
     this.sectionClick.emit(sectionId);
   }
 
-  
-    changeLanguage(event: Event) {
+  changeLanguage(event: Event) {
     const changeEvent = event.target as HTMLInputElement;
     this.translateService.use(changeEvent.value);
 

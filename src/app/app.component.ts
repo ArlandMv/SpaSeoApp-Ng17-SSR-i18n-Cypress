@@ -21,19 +21,24 @@ export interface Service {
   selector: 'app-root',
   template: `
     <app-nav (sectionClick)="onSectionClick($event)"></app-nav>
-    <section class="hero-section background1">
-      <div class="content">  
-        <h1>{{ 'HERO_TITLE' | translate }}</h1>
-        <p>
+    <section class="hero-section background1" data-cy="hero-section">
+      <div class="content" data-cy="hero-content">
+        <h1 data-cy="hero-title">{{ 'HERO_TITLE' | translate }}</h1>
+        <p data-cy="hero-tagline">
           {{ 'HERO_TAGLINE' | translate }}
         </p>
-        <button mat-raised-button color="primary">
+        <button
+          mat-raised-button
+          color="primary"
+          data-cy="hero-cta-button"
+          (click)="onSectionClick('contact-section')"
+        >
           {{ 'HERO_CALL_TO_ACTION' | translate }}
         </button>
       </div>
     </section>
 
-    <div id="services-section" class="services-section"> 
+    <section id="services-section" class="services-section" data-cy="services-section"> 
       <mat-card *ngFor="let i of [1, 2, 3]"> 
         <mat-icon>
           {{ 'SERVICES_ICON_' + i | translate }}
@@ -41,11 +46,11 @@ export interface Service {
         <h3>{{ 'SERVICES_TITLE_' + i | translate }}</h3> 
         <p>{{ 'SERVICES_DESCRIPTION_' + i | translate }}</p> 
       </mat-card> 
-    </div>
+    </section>
 
-     <div id="about-section" class="about-section">
+     <section id="about-section" class="about-section" data-cy="about-section">
         <mat-card>
-            <h2 class="about-me-title">{{ 'ABOUT_ME_SECTION_TITLE' | translate }}</h2>
+            <h2 class="about-me-title" >{{ 'ABOUT_ME_SECTION_TITLE' | translate }}</h2>
             <p class="about-me-text">{{ 'ABOUT_ME_SECTION_DESCRIPTION' | translate }}</p>
             <p class="about-me-text">{{ 'ABOUT_ME_SECTION_EXPERTISE' | translate }}</p>
              <div class="why-choose-me-section">
@@ -57,12 +62,13 @@ export interface Service {
                 </ul>
             </div>
         </mat-card>
-    </div>
-    <div id="technologies-section">
-      
-    </div>
+    </section>
 
-    <section id="contact-section" class="contact-section background1">
+    <section id="technologies-section">
+      
+    </section>
+
+    <section id="contact-section" class="contact-section background1" data-cy="contact-section">
       <mat-card>
         <h2>{{ 'CONTACT_SECTION_TITLE' | translate }}</h2>
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
@@ -133,6 +139,7 @@ export interface Service {
             color="primary"
             type="submit"
             [disabled]="contactForm.invalid"
+            data-cy="contact-submit-button"
           >
             {{ 'CONTACT_FORM_SUBMIT_BUTTON' | translate }}
           </button>
@@ -148,6 +155,24 @@ export interface Service {
     `
       html {
         scroll-behavior: smooth;
+        scroll-duration: 2s;
+        scroll-timing-function: ease-in-out;
+        scroll-snap-type: y proximity;
+        scroll-timeline: --page-scroll block;
+      }
+      @keyframes smooth-scroll {
+        to { scroll-snap-align: start; }
+      }
+      body {
+        scroll-snap-type: y mandatory;
+        animation: smooth-scroll linear;
+        animation-timeline: --page-scroll;
+        animation-range: 0% 100%;
+      }
+      section {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        scroll-margin-top: 50px; /* account for fixed header */
       }
       .background1 {
         background-color: #f5f5f5;
@@ -327,13 +352,19 @@ export class AppComponent implements OnInit, OnDestroy {
   scrollTo(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      console.log("scrolling");
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+      document.documentElement.style.scrollBehavior = 'smooth';
+      document.body.style.scrollBehavior = 'smooth';
     }
   }
 
   //why
   onSectionClick(sectionId: string) {
-    console.log(sectionId);
+    console.log("go to:" + sectionId);
     this.scrollTo(sectionId);
   }
 
