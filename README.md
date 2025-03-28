@@ -27,7 +27,17 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
   - Test call to action button
   - Add custom scroll with adjustable duration 
 
-- ⬜️ **test:** `add form validation tests` (future)
+- ✅ **test:** `add form validation tests`
+  - Field validation tests
+  - Form submission test
+  - Validate email format
+  - Implement screenshot management
+
+- ⬜️ **test:** `add i18n tests`
+  - Language Switching Tests
+  - Translation Coverage Tests
+  - Layout and UI Tests
+  - Screenshot Comparisons
 
 ### 3️⃣ Implement SEO Optimization feat-seo
 

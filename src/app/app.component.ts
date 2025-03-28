@@ -71,11 +71,19 @@ export interface Service {
     <section id="contact-section" class="contact-section background1" data-cy="contact-section">
       <mat-card>
         <h2>{{ 'CONTACT_SECTION_TITLE' | translate }}</h2>
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <form
+          [formGroup]="contactForm"
+          (ngSubmit)="onSubmit()"
+        >
+        <!--name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"-->
+          <input type="hidden" name="form-name" value="contact">
           <mat-form-field>
             <mat-label>{{ 'CONTACT_LABEL_NAME' | translate }}</mat-label>
-            <input matInput formControlName="name" required />
-            <mat-error
+            <input matInput formControlName="name" required data-cy="name-input" />
+            <mat-error data-cy="name-error"
               *ngIf="
                 contactForm.get('name')?.hasError('required') &&
                 contactForm.get('name')?.touched
@@ -88,8 +96,8 @@ export interface Service {
           <div class="two-fields-container">
             <mat-form-field>
               <mat-label>{{ 'CONTACT_LABEL_EMAIL' | translate }}</mat-label>
-              <input matInput formControlName="email" type="email" required />
-              <mat-error
+              <input matInput formControlName="email" type="email" required data-cy="email-input"/>
+              <mat-error data-cy="email-error"
                 *ngIf="
                   contactForm.get('email')?.hasError('required') &&
                   contactForm.get('email')!.touched
@@ -97,7 +105,7 @@ export interface Service {
               >
                 {{ 'CONTACT_ERROR_EMAIL_REQUIRED' | translate }}
               </mat-error>
-              <mat-error
+              <mat-error data-cy="email-invalid-error"
                 *ngIf="
                   contactForm.get('email')?.hasError('email') &&
                   contactForm.get('email')!.touched
@@ -124,8 +132,10 @@ export interface Service {
             <mat-label>{{
               'CONTACT_LABEL_PROJECT_DESCRIPTION' | translate
             }}</mat-label>
-            <textarea matInput formControlName="message" required></textarea>
-            <mat-error
+            <textarea matInput formControlName="message" required data-cy="message-textarea">
+              <!-- add placeholder -->
+            </textarea>
+            <mat-error data-cy="message-error"
               *ngIf="
                 contactForm.get('message')?.hasError('required') &&
                 contactForm.get('message')?.touched

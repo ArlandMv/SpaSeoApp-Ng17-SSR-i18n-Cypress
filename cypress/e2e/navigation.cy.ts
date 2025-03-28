@@ -44,6 +44,11 @@ describe('Navigation Tests', () => {
           expect(newOffset).to.be.lessThan(viewportHeight * 0.8, 'Section should be in upper part of viewport');
           expect(newOffset + sectionHeight).to.be.greaterThan(100, 'Bottom of section should be visible');
           expect(newOffset).to.be.lessThan(initialOffset, 'Should have scrolled downward');
+          
+          // Take organized screenshot only if needed
+          if (Cypress.currentTest.title.includes('contact section')) {
+            cy.screenshot(`navigation/${Cypress.currentTest.title}-visible`, { overwrite: true });
+          }
         });
     });
   });
