@@ -46,9 +46,9 @@ import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
     //provideRouter(routes),
     provideClientHydration(),
     provideAnimationsAsync(),
-    // review which to use
     provideHttpClient(withFetch()), //ng>17
-    //provideHttpClient(),
+    //provideHttpClient(),  //ng<17
+    // reformat to separate service
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: 'en',

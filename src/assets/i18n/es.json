@@ -1,8 +1,13 @@
 {
+  "NAV_SERVICES": "servicios",
+  "NAV_ABOUT": "sobre nosotros", 
+  "NAV_CONTACT": "contacto",
+
   "HERO_TITLE": "Potenciamos Solopreneurs y Negocios con Soluciones Web Personalizadas",
   "HERO_TAGLINE": "Servicios Especializados de Front-End, Full-Stack y Consultoría para Impulsar su Éxito.",
   "HERO_CALL_TO_ACTION": "Solicite una Consulta Gratuita",
   "HERO_OPTIONAL_IMAGE": "Un diseño limpio y moderno que muestra fragmentos de código, interfaces de aplicaciones o un espacio de trabajo profesional.",
+
   "SERVICES_SECTION_TITLE": "Nuestros Servicios Especializados",
   "SERVICES_ICON_1": "web",
   "SERVICES_TITLE_1": "Landing Pages Front-End para Solopreneurs",
@@ -13,6 +18,7 @@
   "SERVICES_ICON_3": "support_agent",
   "SERVICES_TITLE_3": "Servicios de Consultoría",
   "SERVICES_DESCRIPTION_3": "Obtenga consultoría experta en desarrollo Front-End, Back-End y Salesforce Apex. Ofrecemos tarifas por hora competitivas para ayudarle a superar desafíos técnicos y optimizar sus proyectos.",
+
   "ABOUT_ME_SECTION_TITLE": "Sobre Mí",
   "ABOUT_ME_SECTION_DESCRIPTION": "Con experiencia en tecnologías modernas como Angular, Spring Boot y Salesforce Apex, ofrezco soluciones de alta calidad, adaptadas a sus necesidades. Mi objetivo es impulsar el crecimiento de su proyecto o negocio mediante la innovación y el desarrollo eficiente.",
   "ABOUT_ME_SECTION_EXPERTISE": "Mi experiencia abarca un amplio rango de tecnologías, incluyendo Angular, Spring Boot, Jamstack, Bases de datos (como PostgreSQL y MySQL), herramientas de informes y Salesforce Apex. Estas habilidades me permiten construir soluciones personalizadas y eficaces.",
@@ -20,9 +26,11 @@
   "ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_1": "Soluciones Personalizadas - Me enfoco en sus necesidades específicas, ya sea una landing page o una aplicación compleja.",
   "ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_2": "Experiencia y Conocimiento - Poseo un profundo conocimiento en tecnologías web modernas y un compromiso con la calidad.",
   "ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_3": "Comunicación Directa - Al trabajar directamente con usted, aseguro una comprensión clara y un desarrollo eficiente.",
+
   "TECHNOLOGY_SECTION_TITLE": "Nuestra Experiencia y Tecnologías",
   "TECHNOLOGY_SECTION_DESCRIPTION": "Nos especializamos en tecnologías modernas para ofrecer soluciones de alta calidad.",
   "TECHNOLOGY_TECHNOLOGIES": "Angular, Spring Boot, Jamstack, Bases de datos (ej., PostgreSQL, MySQL), Herramientas de Informes, Salesforce Apex",
+
   "CONTACT_SECTION_TITLE": "Hablemos de su Proyecto",
   "CONTACT_LABEL_NAME": "Nombre Completo",
   "CONTACT_LABEL_EMAIL": "Correo Electrónico",
@@ -37,12 +45,12 @@
   "CONTACT_INFORMATION_PHONE": "su-numero-de-telefono",
   "CONTACT_INFORMATION_LINKEDIN": "su-perfil-de-linkedin-url",
   "CONTACT_OPTIONAL": "Integración con Calendly o servicio similar",
-  "FOOTER_COPYRIGHT": "Arland Michelena Villegas. Todos los derechos reservados.",
-  "FOOTER_LINKS": "Política de Privacidad, Términos de Servicio, Mapa del Sitio",
   "CONTACT_ERROR_NAME_REQUIRED": "El nombre es obligatorio",
   "CONTACT_ERROR_EMAIL_REQUIRED": "El correo electrónico es obligatorio",
   "CONTACT_ERROR_EMAIL_INVALID": "Por favor, introduce un correo electrónico válido",
   "CONTACT_ERROR_SERVICE_REQUIRED": "El servicio es obligatorio",
   "CONTACT_ERROR_MESSAGE_REQUIRED": "El mensaje es obligatorio",
-  "CONTACT_ERROR_PROJECT_DESCRIPTION_GUIDANCE": "Por favor, proporciona una breve descripción de tu proyecto. Incluye detalles sobre tus objetivos, las funcionalidades deseadas, cualquier tecnología específica que prefieras y tu cronograma."
+  "CONTACT_ERROR_PROJECT_DESCRIPTION_GUIDANCE": "Por favor, proporciona una breve descripción de tu proyecto. Incluye detalles sobre tus objetivos, las funcionalidades deseadas, cualquier tecnología específica que prefieras y tu cronograma.",
+
+  "FOOTER_COPYRIGHT": "Arland Michelena Villegas. Todos los derechos reservados."
 }
