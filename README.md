@@ -15,6 +15,7 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
 - ✅ **feat:** `implement 2 languages for i18n`
 - ✅ **fix:** `Improved styles, form layout and navigation`
 - ✅ **feat:** `complete i18n implementation for 2 sections`
+- ⬜️ **refactor:** `refactor i18n service form app.module`
 
 ### 2️⃣ Cypress Testing feat-cypress
 
@@ -33,10 +34,10 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
   - Validate email format
   - Implement screenshot management
 
-- ⬜️ **test:** `add i18n tests`
-  - Language Switching Tests
-  - Translation Coverage Tests
-  - Layout and UI Tests
+- ✅ **test:** `add i18n tests and language persistence`
+  - English Language Tests
+  - Spanish Language Tests
+  - LocalStorage persistence  
   - Screenshot Comparisons
 
 ### 3️⃣ Implement SEO Optimization feat-seo

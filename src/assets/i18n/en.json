@@ -1,4 +1,8 @@
 {
+  "NAV_SERVICES": "services",
+  "NAV_ABOUT": "about",
+  "NAV_CONTACT": "contact",
+
   "HERO_TITLE": "Empowering Solopreneurs & Businesses with Custom Web Solutions",
   "HERO_TAGLINE": "Specialized Front-End, Full-Stack, and Consulting Services to Drive Your Success.",
   "HERO_CALL_TO_ACTION": "Request a Free Consultation",
@@ -41,12 +45,12 @@
   "CONTACT_INFORMATION_PHONE": "your-phone-number",
   "CONTACT_INFORMATION_LINKEDIN": "your-linkedin-profile-url",
   "CONTACT_OPTIONAL": "Calendly or similar service integration",
-
-  "FOOTER_COPYRIGHT": "Arland Michelena Villegas. All rights reserved.",
   "CONTACT_ERROR_NAME_REQUIRED": "Name is required",
   "CONTACT_ERROR_EMAIL_REQUIRED": "Email is required",
   "CONTACT_ERROR_EMAIL_INVALID": "Please enter a valid email",
   "CONTACT_ERROR_SERVICE_REQUIRED": "Service is required",
   "CONTACT_ERROR_MESSAGE_REQUIRED": "Message is required",
-  "CONTACT_ERROR_PROJECT_DESCRIPTION_GUIDANCE": "Please provide a brief description of your project. Include details about your goals, desired features, any specific technologies you prefer, and your timeline."
+  "CONTACT_ERROR_PROJECT_DESCRIPTION_GUIDANCE": "Please provide a brief description of your project. Include details about your goals, desired features, any specific technologies you prefer, and your timeline.",
+
+  "FOOTER_COPYRIGHT": "Arland Michelena Villegas. All rights reserved."
 }

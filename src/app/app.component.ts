@@ -11,11 +11,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { NavigationEnd, Router } from '@angular/router';
 
-export interface Service {
-  icon: string;
-  title: string;
-  description: string;
-}
 
 @Component({
   selector: 'app-root',
@@ -300,9 +295,10 @@ export class AppComponent implements OnInit, OnDestroy {
   private translate = inject(TranslateService);
   contactForm: FormGroup = this.fb.group({});
   router = inject(Router);
-  translatedServices: Service[] = [];
-
+  //plataformId: any = inject(PLATFORM_ID)
+  
   isBrowser: boolean;
+  currentLang: string | undefined 
   year: number | undefined;
   serviceOptions = [
     {
@@ -332,9 +328,9 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log('ngOnInit called');
     this.year = new Date().getFullYear();
-    this.translate.get(['services']).subscribe((translation) => {
-      this.translatedServices = translation['services'];
-    });
+    if (this.isBrowser){
+      this.currentLang = localStorage.getItem('userLang') || 'en';
+    }
   }
 
   private createContactForm() {
@@ -367,12 +363,13 @@ export class AppComponent implements OnInit, OnDestroy {
         behavior: 'smooth',
         block: 'start'
       });
+      //refactor to SCSS
       document.documentElement.style.scrollBehavior = 'smooth';
       document.body.style.scrollBehavior = 'smooth';
     }
   }
 
-  //why
+  //refactor
   onSectionClick(sectionId: string) {
     console.log("go to:" + sectionId);
     this.scrollTo(sectionId);
