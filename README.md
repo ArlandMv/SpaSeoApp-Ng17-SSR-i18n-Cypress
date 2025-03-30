@@ -23,12 +23,14 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
   - Install Cypress: `ng add @cypress/schematic`
   - Add Cypress config
 - ✅ **test:** `add navigation tests`
+
   - implement data-cy attributes for testing
   - Test section navigation
   - Test call to action button
-  - Add custom scroll with adjustable duration 
+  - Add custom scroll with adjustable duration
 
 - ✅ **test:** `add form validation tests`
+
   - Field validation tests
   - Form submission test
   - Validate email format
@@ -37,17 +39,32 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
 - ✅ **test:** `add i18n tests and language persistence`
   - English Language Tests
   - Spanish Language Tests
-  - LocalStorage persistence  
+  - LocalStorage persistence
   - Screenshot Comparisons
 
-### 3️⃣ Implement SEO Optimization feat-seo
+### 3️⃣ Branch Management & Deployment feat/deployment
+
+- ✅ **chore:** `add investigation documents`
+  - CMS comparison report
+  - Calendar API options
+- ✅ **chore:** `add Netlify configuration files`
+  - netlify.toml setup
+  - SSR function configuration
+- ⬜️ **feat:** `implement SSR deployment`
+  - Serverless function adaptation
+  - Environment variables
+- ⬜️ **chore:** `implement CI/CD pipeline`
+  - Automatic builds on push
+  - Branch-specific previews
+
+### 4️⃣ Implement SEO Optimization feat-seo
 
 - ⬜️ **feat:** `add structured data for Google indexing`
 - ⬜️ **feat:** `add Open Graph and Twitter meta tags`
 
 ---
 
-## Things I Learned: 
+## Things I Learned:
 
 ### Stable Selectors in Cypress
 
