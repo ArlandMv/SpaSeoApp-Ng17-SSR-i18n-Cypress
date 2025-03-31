@@ -14,8 +14,8 @@
    ```toml
    [build]
      command = "npm run build"
-     publish = "dist/spa-seo-app-ng17-ssr-i18n-cypress/browser"
-     functions = "dist/spa-seo-app-ng17-ssr-i18n-cypress/server"
+     publish = "dist/ng17-ssr/browser"
+     functions = "dist/ng17-ssr/server"
 
    [[redirects]]
      from = "/*"
@@ -39,6 +39,10 @@
 
 ## Deployment Process
 
+**note:**
+netlify deploy --prod --functions=false
+was the only way i could deploy to production.
+
 1. Push feature branch:
    ```bash
    git push origin feat/netlify-deployment
@@ -47,8 +51,8 @@
    - New site from Git
    - Select repository
    - Set build command: `npm run build`
-   - Set publish directory: `dist/spa-seo-app-ng17-ssr-i18n-cypress/browser`
-   - Set functions directory: `dist/spa-seo-app-ng17-ssr-i18n-cypress/server`
+   - Set publish directory: `dist/ng17-ssr/browser`
+   - Set functions directory: `dist/ng17-ssr/server`
 
 ## Testing
 

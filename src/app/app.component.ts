@@ -11,7 +11,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { NavigationEnd, Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-root',
   template: `
@@ -33,52 +32,67 @@ import { NavigationEnd, Router } from '@angular/router';
       </div>
     </section>
 
-    <section id="services-section" class="services-section" data-cy="services-section"> 
-      <mat-card *ngFor="let i of [1, 2, 3]"> 
+    <section
+      id="services-section"
+      class="services-section"
+      data-cy="services-section"
+    >
+      <mat-card *ngFor="let i of [1, 2, 3]">
         <mat-icon>
           {{ 'SERVICES_ICON_' + i | translate }}
-        </mat-icon> 
-        <h3>{{ 'SERVICES_TITLE_' + i | translate }}</h3> 
-        <p>{{ 'SERVICES_DESCRIPTION_' + i | translate }}</p> 
-      </mat-card> 
+        </mat-icon>
+        <h3>{{ 'SERVICES_TITLE_' + i | translate }}</h3>
+        <p>{{ 'SERVICES_DESCRIPTION_' + i | translate }}</p>
+      </mat-card>
     </section>
 
-     <section id="about-section" class="about-section" data-cy="about-section">
-        <mat-card>
-            <h2 class="about-me-title" >{{ 'ABOUT_ME_SECTION_TITLE' | translate }}</h2>
-            <p class="about-me-text">{{ 'ABOUT_ME_SECTION_DESCRIPTION' | translate }}</p>
-            <p class="about-me-text">{{ 'ABOUT_ME_SECTION_EXPERTISE' | translate }}</p>
-             <div class="why-choose-me-section">
-                <h3>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME' | translate }}</h3>
-                <ul>
-                    <li>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_1' | translate }}</li>
-                    <li>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_2' | translate }}</li>
-                    <li>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_3' | translate }}</li>
-                </ul>
-            </div>
-        </mat-card>
+    <section id="about-section" class="about-section" data-cy="about-section">
+      <mat-card>
+        <h2 class="about-me-title">
+          {{ 'ABOUT_ME_SECTION_TITLE' | translate }}
+        </h2>
+        <p class="about-me-text">
+          {{ 'ABOUT_ME_SECTION_DESCRIPTION' | translate }}
+        </p>
+        <p class="about-me-text">
+          {{ 'ABOUT_ME_SECTION_EXPERTISE' | translate }}
+        </p>
+        <div class="why-choose-me-section">
+          <h3>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME' | translate }}</h3>
+          <ul>
+            <li>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_1' | translate }}</li>
+            <li>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_2' | translate }}</li>
+            <li>{{ 'ABOUT_ME_SECTION_WHY_CHOOSE_ME_POINT_3' | translate }}</li>
+          </ul>
+        </div>
+      </mat-card>
     </section>
 
-    <section id="technologies-section">
-      
-    </section>
+    <section id="technologies-section"></section>
 
-    <section id="contact-section" class="contact-section background1" data-cy="contact-section">
+    <section
+      id="contact-section"
+      class="contact-section background1"
+      data-cy="contact-section"
+    >
       <mat-card>
         <h2>{{ 'CONTACT_SECTION_TITLE' | translate }}</h2>
-        <form
-          [formGroup]="contactForm"
-          (ngSubmit)="onSubmit()"
-        >
-        <!--name="contact"
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <!--name="contact"
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"-->
-          <input type="hidden" name="form-name" value="contact">
+          <input type="hidden" name="form-name" value="contact" />
           <mat-form-field>
             <mat-label>{{ 'CONTACT_LABEL_NAME' | translate }}</mat-label>
-            <input matInput formControlName="name" required data-cy="name-input" />
-            <mat-error data-cy="name-error"
+            <input
+              matInput
+              formControlName="name"
+              required
+              data-cy="name-input"
+            />
+            <mat-error
+              data-cy="name-error"
               *ngIf="
                 contactForm.get('name')?.hasError('required') &&
                 contactForm.get('name')?.touched
@@ -91,8 +105,15 @@ import { NavigationEnd, Router } from '@angular/router';
           <div class="two-fields-container">
             <mat-form-field>
               <mat-label>{{ 'CONTACT_LABEL_EMAIL' | translate }}</mat-label>
-              <input matInput formControlName="email" type="email" required data-cy="email-input"/>
-              <mat-error data-cy="email-error"
+              <input
+                matInput
+                formControlName="email"
+                type="email"
+                required
+                data-cy="email-input"
+              />
+              <mat-error
+                data-cy="email-error"
                 *ngIf="
                   contactForm.get('email')?.hasError('required') &&
                   contactForm.get('email')!.touched
@@ -100,7 +121,8 @@ import { NavigationEnd, Router } from '@angular/router';
               >
                 {{ 'CONTACT_ERROR_EMAIL_REQUIRED' | translate }}
               </mat-error>
-              <mat-error data-cy="email-invalid-error"
+              <mat-error
+                data-cy="email-invalid-error"
                 *ngIf="
                   contactForm.get('email')?.hasError('email') &&
                   contactForm.get('email')!.touched
@@ -127,10 +149,17 @@ import { NavigationEnd, Router } from '@angular/router';
             <mat-label>{{
               'CONTACT_LABEL_PROJECT_DESCRIPTION' | translate
             }}</mat-label>
-            <textarea matInput formControlName="message" required data-cy="message-textarea">
+            <textarea
+              matInput
+              formControlName="message"
+              required
+              data-cy="message-textarea"
+            >
               <!-- add placeholder -->
-            </textarea>
-            <mat-error data-cy="message-error"
+            </textarea
+            >
+            <mat-error
+              data-cy="message-error"
               *ngIf="
                 contactForm.get('message')?.hasError('required') &&
                 contactForm.get('message')?.touched
@@ -166,7 +195,9 @@ import { NavigationEnd, Router } from '@angular/router';
         scroll-timeline: --page-scroll block;
       }
       @keyframes smooth-scroll {
-        to { scroll-snap-align: start; }
+        to {
+          scroll-snap-align: start;
+        }
       }
       body {
         scroll-snap-type: y mandatory;
@@ -229,9 +260,8 @@ import { NavigationEnd, Router } from '@angular/router';
         margin-bottom: 20px;
         font-size: 2rem;
       }
-       .why-choose-me-section {
+      .why-choose-me-section {
         margin-top: 20px;
-        
       }
 
       .why-choose-me-section ul {
@@ -296,9 +326,9 @@ export class AppComponent implements OnInit, OnDestroy {
   contactForm: FormGroup = this.fb.group({});
   router = inject(Router);
   //plataformId: any = inject(PLATFORM_ID)
-  
+
   isBrowser: boolean;
-  currentLang: string | undefined 
+  currentLang: string | undefined;
   year: number | undefined;
   serviceOptions = [
     {
@@ -328,7 +358,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log('ngOnInit called');
     this.year = new Date().getFullYear();
-    if (this.isBrowser){
+    if (this.isBrowser) {
       this.currentLang = localStorage.getItem('userLang') || 'en';
     }
   }
@@ -358,10 +388,10 @@ export class AppComponent implements OnInit, OnDestroy {
   scrollTo(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
-      console.log("scrolling");
+      console.log('scrolling');
       element.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
       //refactor to SCSS
       document.documentElement.style.scrollBehavior = 'smooth';
@@ -371,7 +401,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   //refactor
   onSectionClick(sectionId: string) {
-    console.log("go to:" + sectionId);
+    console.log('go to:' + sectionId);
     this.scrollTo(sectionId);
   }
 

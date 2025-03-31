@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr": "node dist/spa-seo-app-ng17-ssr-i18n-cypress/server/server.mjs",
+    "serve:ssr": "node dist/ng17-ssr/server/server.mjs",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"

@@ -44,18 +44,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/spa-seo-app-ng17-ssr-i18n-cypress",
+            "outputPath": "dist/ng17-ssr",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets", "src/_redirects"],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
@@ -72,7 +67,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "800kb",
                   "maximumError": "1mb"
                 },
                 {
@@ -95,10 +90,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:build:production"
+              "buildTarget": "Ng17-SSR:build:production"
             },
             "development": {
-              "buildTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:build:development"
+              "buildTarget": "Ng17-SSR:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -106,22 +101,16 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:build"
+            "buildTarget": "Ng17-SSR:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets", "src/_redirects"],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
@@ -132,11 +121,11 @@
         "cypress-run": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve"
+            "devServerTarget": "Ng17-SSR:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve:production"
+              "devServerTarget": "Ng17-SSR:serve:production"
             }
           }
         },
@@ -150,27 +139,27 @@
         "ct": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve",
+            "devServerTarget": "Ng17-SSR:serve",
             "watch": true,
             "headless": false,
             "testingType": "component"
           },
           "configurations": {
             "development": {
-              "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve:development"
+              "devServerTarget": "Ng17-SSR:serve:development"
             }
           }
         },
         "e2e": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve",
+            "devServerTarget": "Ng17-SSR:serve",
             "watch": true,
             "headless": false
           },
           "configurations": {
             "production": {
-              "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve:production"
+              "devServerTarget": "Ng17-SSR:serve:production"
             }
           }
         }
@@ -179,9 +168,6 @@
   },
   "cli": {
     "analytics": false,
-    "schematicCollections": [
-      "@cypress/schematic",
-      "@schematics/angular"
-    ]
+    "schematicCollections": ["@cypress/schematic", "@schematics/angular"]
   }
 }

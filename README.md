@@ -2,6 +2,8 @@
 
 Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internacionalización (i18n). Facilita el desarrollo con SCSS y plantillas en línea. Garantiza calidad con Cypress, pruebas modernas y eficientes
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b103db3a-b672-4475-9710-9a81e982c79d/deploy-status)](https://app.netlify.com/sites/spa-seo-ssr/deploys)
+
 ---
 
 ## Rodemap
@@ -44,12 +46,14 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
 
 ### 3️⃣ Branch Management & Deployment feat/deployment
 
-- ✅ **chore:** `add investigation documents`
+- ✅ **docs:** `add investigation documents`
   - CMS comparison report
   - Calendar API options
+  - NETLIFY_SSR_DEPLOYMENT_REPORT
 - ✅ **chore:** `add Netlify configuration files`
   - netlify.toml setup
-  - SSR function configuration
+  - netlify cli for testing
+  - updated SSR deployment plan
 - ⬜️ **feat:** `implement SSR deployment`
   - Serverless function adaptation
   - Environment variables
