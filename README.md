@@ -44,7 +44,7 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
   - LocalStorage persistence
   - Screenshot Comparisons
 
-### 3️⃣ Branch Management & Deployment feat/deployment
+### 3️⃣ Jamstack with Netlify feat/ssr-deployment
 
 - ✅ **docs:** `add investigation documents`
   - CMS comparison report
@@ -54,17 +54,61 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
   - netlify.toml setup
   - netlify cli for testing
   - updated SSR deployment plan
-- ⬜️ **feat:** `implement SSR deployment`
-  - Serverless function adaptation
-  - Environment variables
-- ⬜️ **chore:** `implement CI/CD pipeline`
-  - Automatic builds on push
-  - Branch-specific previews
+  - implement CD pipeline with previews
+**Future Features** 
+- ⬜️ **feat:** `implement serverless functions`
+  - Save Environment variables
+  - Implement 3rd Party api calls
+- ⬜️ **chore:** `implement CI pipeline`
+  - Linting and unit tests > 80%
+  - Visual regression tests & E2E tests
+  - Lighthouse audit & Performance budget check
 
 ### 4️⃣ Implement SEO Optimization feat-seo
-
+- ✅ **docs:** `add comprehensive metadata reference guides`
+- ⬜️ **feat:** `add Lighthouse initials checks`
+- ⬜️ **feat:** `Core Implementation add Open Graph`
 - ⬜️ **feat:** `add structured data for Google indexing`
-- ⬜️ **feat:** `add Open Graph and Twitter meta tags`
+  - JSON-LD schema for consultation services
+  - add sitemap.xml for better indexing
+- ⬜️ **feat:** `optimize images for SEO`
+  - Compression and alt tags
+- ✅ **docs:** `add Lighthouse optimization to documentation`
+
+<!-- 
+Implement SEO Optimization feat/seo
+- ✅ `feat: implement SSR for improved SEO performance`
+- ✅ `feat: add structured data for Google indexing`
+- ✅ `feat: add Open Graph and Twitter meta tags`
+
+#### SEO Metadata
+- ⬜️ **feat:** `basic metadata implementation`
+  ```typescript
+  // Example: Setting basic metadata in Angular
+  this.meta.addTags([
+    { name: 'description', content: 'Professional spa services' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+  ]);
+  ```
+- ⬜️ **feat:** `add social media meta tags`
+  ```typescript
+  // Planned Open Graph/Twitter implementation
+  this.meta.addTags([
+    { property: 'og:title', content: 'Spa Services' },
+    { property: 'og:description', content: 'Book professional spa treatments' },
+    { name: 'twitter:card', content: 'summary_large_image' }
+  ]);
+
+  ```
+- ⬜️ **feat:** `i18n metadata support`
+  ```typescript
+  // Planned multilingual metadata
+  this.meta.updateTag({
+    name: 'description',
+    content: this.translate.instant('META.DESCRIPTION')
+  });
+  ```
+-->
 
 ---
 
@@ -77,9 +121,4 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
 <!--
 ### Things I Learned: Stable Selectors in Cypress
 
-
-## 3 Implement SEO Optimization feat/seo
-- ✅ `feat: implement SSR for improved SEO performance`
-- ✅ `feat: add structured data for Google indexing`
-- ✅ `feat: add Open Graph and Twitter meta tags`
 -->
