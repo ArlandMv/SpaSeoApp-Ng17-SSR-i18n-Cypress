@@ -66,14 +66,17 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
 
 ### 4️⃣ Implement SEO Optimization feat-seo
 - ✅ **docs:** `add comprehensive metadata reference guides`
-- ⬜️ **feat:** `add Lighthouse initials checks`
+- ✅ **feat:** ` add Lighthouse performance testing infrastructure`
+  - adds npm scripts for running Lighthouse audits
+  - includes guide documentation for performance testing
+ 
 - ⬜️ **feat:** `Core Implementation add Open Graph`
 - ⬜️ **feat:** `add structured data for Google indexing`
   - JSON-LD schema for consultation services
   - add sitemap.xml for better indexing
 - ⬜️ **feat:** `optimize images for SEO`
   - Compression and alt tags
-- ✅ **docs:** `add Lighthouse optimization to documentation`
+- ⬜️ **docs:** `add Lighthouse optimization to documentation`
 
 <!-- 
 Implement SEO Optimization feat/seo
