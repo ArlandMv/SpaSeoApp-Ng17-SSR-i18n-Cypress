@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Output, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  OnInit,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
@@ -9,17 +16,30 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
       <span class="logo">🌐 Software Services</span>
       <span class="spacer"></span>
       <nav>
-        <a mat-button data-cy="services-link" (click)="goToSection('services-section')">
+        <a
+          mat-button
+          data-cy="services-link"
+          (click)="goToSection('services-section')"
+        >
           {{ 'NAV_SERVICES' | translate }}
         </a>
-        <a mat-button data-cy="about-link" (click)="goToSection('about-section')">
+        <a
+          mat-button
+          data-cy="about-link"
+          (click)="goToSection('about-section')"
+        >
           {{ 'NAV_ABOUT' | translate }}
         </a>
-        <a mat-raised-button
-           data-cy="contact-link"
-           class="nav-link"
-           color="accent"
-           (click)="goToSection('contact-section')">
+        <!--a mat-button data-cy="qa-link" routerLink="/questions-and-answers">
+          Q&amp;A
+        </a-->
+        <a
+          mat-raised-button
+          data-cy="contact-link"
+          class="nav-link"
+          color="accent"
+          (click)="goToSection('contact-section')"
+        >
           {{ 'NAV_CONTACT' | translate }}
         </a>
       </nav>
@@ -31,7 +51,11 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
         [value]="currentLang"
         (change)="changeLanguage($event)"
       >
-        <option *ngFor="let locale of locales" [value]="locale.value" [attr.data-cy]="'locale-option-' + locale.value">
+        <option
+          *ngFor="let locale of locales"
+          [value]="locale.value"
+          [attr.data-cy]="'locale-option-' + locale.value"
+        >
           {{ locale.name }}
         </option>
       </select>
@@ -121,7 +145,7 @@ export class NavComponent implements OnInit {
       localStorage.setItem('userLang', changeEvent.value);
       console.log('Changed to Language:', changeEvent.value);
       const lang = (event.target as HTMLSelectElement).value;
-      console.log("lang="+lang);
+      console.log('lang=' + lang);
       this.currentLang = lang;
       //not necesaary anymore
       this.languageChange.emit(lang);

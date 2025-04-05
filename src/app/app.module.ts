@@ -24,9 +24,10 @@ import { provideRouter } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { translateLoaderFactory } from './core/utils/utils';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+import { QuestionsAndAnswersComponent } from './components/questions-and-answers/questions-and-answers.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent],
+  declarations: [AppComponent, NavComponent, QuestionsAndAnswersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

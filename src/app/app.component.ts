@@ -8,6 +8,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SeoService } from './core/services/seo.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NavigationEnd, Router } from '@angular/router';
 
@@ -69,6 +70,7 @@ import { NavigationEnd, Router } from '@angular/router';
     </section>
 
     <section id="technologies-section"></section>
+    <!--router-outlet></router-outlet-->
 
     <section
       id="contact-section"
@@ -182,7 +184,9 @@ import { NavigationEnd, Router } from '@angular/router';
     </section>
 
     <footer>
-      <p>©{{ year }} {{ 'FOOTER_COPYRIGHT' | translate }}</p>
+      <footer>
+        <p>©{{ year }} {{ 'FOOTER_COPYRIGHT' | translate }}</p>
+      </footer>
     </footer>
   `,
   styles: [
@@ -323,6 +327,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent implements OnInit, OnDestroy {
   private fb = inject(FormBuilder);
   private translate = inject(TranslateService);
+  private seoService = inject(SeoService);
   contactForm: FormGroup = this.fb.group({});
   router = inject(Router);
   //plataformId: any = inject(PLATFORM_ID)
@@ -358,6 +363,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log('ngOnInit called');
     this.year = new Date().getFullYear();
+    this.seoService.updateTags({
+      titleKey: 'META_HOME_TITLE',
+      descriptionKey: 'META_HOME_DESCRIPTION',
+    });
     if (this.isBrowser) {
       this.currentLang = localStorage.getItem('userLang') || 'en';
     }

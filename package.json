@@ -3,17 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start:fix": "ng serve",
     "build": "ng build",
-    "build:ssr": "ng build && ng run spa-seo-app-ng17-ssr-i18n-cypress:server",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr": "node dist/ng17-ssr/server/server.mjs",
-    "serve:ssr:full": "npm run build:ssr && npm run serve:ssr",
+    "serve:ssr:full": "npm run build && npm run serve:ssr",
     "lh:init": "if not exist qa\\lighthouse\\reports (mkdir qa\\lighthouse\\reports) else (echo DIRECTORY EXISTS: qa\\lighthouse\\reports)",
     "lh:prod": "npm run lh:init && lighthouse https://spa-seo-ssr.netlify.app/ --output html --output-path ./qa/lighthouse/reports/prod_report.html --view",
     "lh:prod:json": "npm run lh:init && lighthouse https://spa-seo-ssr.netlify.app/ --output json --output-path ./qa/lighthouse/reports/prod_report.json",
-    "lh:dev": "npm run lh:init && lighthouse http://localhost:4000 --output html --output-path ./qa/lighthouse/reports/dev_report.html --view",
+    "lh:dev": "echo RUN 'serve:ssr:full' & lighthouse http://localhost:4000 --output html --output-path ./qa/lighthouse/reports/dev_report.html --view",
+    "lh:dev:fix": "npm run serve:ssr:full & sleep 10 && lighthouse http://localhost:4000 --output html --output-path ./qa/lighthouse/reports/dev_report.html --view && pkill -f 'node dist/ng17-ssr/server/server.mjs'",
     "lh:dev:json": "npm run lh:init && lighthouse http://localhost:4000 --output json --output-path ./qa/lighthouse/reports/dev_report.json",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
@@ -55,6 +55,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "lighthouse": "^12.5.1",
     "typescript": "~5.4.2"
   }
 }

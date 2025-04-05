@@ -17,7 +17,7 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
 - ✅ **feat:** `implement 2 languages for i18n`
 - ✅ **fix:** `Improved styles, form layout and navigation`
 - ✅ **feat:** `complete i18n implementation for 2 sections`
-- ⬜️ **refactor:** `refactor i18n service form app.module`
+- ⬜️ **refactor:** `refactor i18n service from app.module`
 
 ### 2️⃣ Cypress Testing feat-cypress
 
@@ -25,24 +25,21 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
   - Install Cypress: `ng add @cypress/schematic`
   - Add Cypress config
 - ✅ **test:** `add navigation tests`
-
   - implement data-cy attributes for testing
   - Test section navigation
   - Test call to action button
   - Add custom scroll with adjustable duration
-
 - ✅ **test:** `add form validation tests`
-
   - Field validation tests
   - Form submission test
   - Validate email format
   - Implement screenshot management
-
 - ✅ **test:** `add i18n tests and language persistence`
   - English Language Tests
   - Spanish Language Tests
   - LocalStorage persistence
   - Screenshot Comparisons
+- ⬜️ **refactor:** `update tests to follow AAA-patern`
 
 ### 3️⃣ Jamstack with Netlify feat/ssr-deployment
 
@@ -55,7 +52,7 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
   - netlify cli for testing
   - updated SSR deployment plan
   - implement CD pipeline with previews
-**Future Features** 
+    **Future Features**
 - ⬜️ **feat:** `implement serverless functions`
   - Save Environment variables
   - Implement 3rd Party api calls
@@ -65,20 +62,25 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
   - Lighthouse audit & Performance budget check
 
 ### 4️⃣ Implement SEO Optimization feat-seo
+
 - ✅ **docs:** `add comprehensive metadata reference guides`
 - ✅ **feat:** ` add Lighthouse performance testing infrastructure`
   - adds npm scripts for running Lighthouse audits
   - includes guide documentation for performance testing
- 
-- ⬜️ **feat:** `Core Implementation add Open Graph`
+- ✅ **feat:** `Core Implementation add Open Graph`
+
+  - static meta tags SEO(73->82)
+  - meta service for i18n SEO(82->83)
+  - add robots.txt SEO(83->92)
+  - add sitemap.xml for better indexing
+
 - ⬜️ **feat:** `add structured data for Google indexing`
   - JSON-LD schema for consultation services
-  - add sitemap.xml for better indexing
 - ⬜️ **feat:** `optimize images for SEO`
   - Compression and alt tags
 - ⬜️ **docs:** `add Lighthouse optimization to documentation`
 
-<!-- 
+<!--
 Implement SEO Optimization feat/seo
 - ✅ `feat: implement SSR for improved SEO performance`
 - ✅ `feat: add structured data for Google indexing`
@@ -122,6 +124,22 @@ Implement SEO Optimization feat/seo
 **Key Takeaway:** Employing stable selectors, such as `data-cy` attributes, minimizes the risk of tests failing due to UI changes. This practice ensures that tests are more independent and less prone to flakiness, ultimately leading to a more robust and maintainable test suite.
 
 <!--
-### Things I Learned: Stable Selectors in Cypress
+### Things I Learned: meta tags from ssr
+
+
+https://github.com/ArlandMv/SpaSeoApp-Ng17-SSR-i18n-Cypress/pull/4#issuecomment-2767773084
+
+✅ Deploy Preview for spa-seo-ssr ready!
+Name	Link
+🔨 Latest commit	756af04
+🔍 Latest deploy log	https://app.netlify.com/sites/spa-seo-ssr/deploys/67eb3d36198ad20008cd7b6d
+😎 Deploy Preview	https://deploy-preview-4--spa-seo-ssr.netlify.app
+📱 Preview on mobile
+Toggle QR Code...
+
+
+QR Code
+
+Use your smartphone camera to open QR code link.
 
 -->
