@@ -74,8 +74,12 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
   - add robots.txt SEO(83->92)
   - add sitemap.xml for better indexing
 
-- ⬜️ **feat:** `add structured data for Google indexing`
-  - JSON-LD schema for consultation services
+- ✅ **feat:** `add structured data and track performance`
+
+  - Implement JSON-LD schema for better indexing
+  - Add Lighthouse report and images (73 -> 92)
+  - Document structured data implementation details
+
 - ⬜️ **feat:** `optimize images for SEO`
   - Compression and alt tags
 - ⬜️ **docs:** `add Lighthouse optimization to documentation`
