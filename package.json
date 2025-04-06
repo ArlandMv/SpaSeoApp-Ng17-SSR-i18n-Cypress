@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:fix": "ng serve",
+    "dev": "npm run build && netlify dev",
+    "serve": "ng serve",
+    "start": "npm run serve:ssr",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -15,6 +17,7 @@
     "lh:dev": "echo RUN 'serve:ssr:full' & lighthouse http://localhost:4000 --output html --output-path ./qa/lighthouse/reports/dev_report.html --view",
     "lh:dev:fix": "npm run serve:ssr:full & sleep 10 && lighthouse http://localhost:4000 --output html --output-path ./qa/lighthouse/reports/dev_report.html --view && pkill -f 'node dist/ng17-ssr/server/server.mjs'",
     "lh:dev:json": "npm run lh:init && lighthouse http://localhost:4000 --output json --output-path ./qa/lighthouse/reports/dev_report.json",
+    "lh:dev:ntlf": "npm run lh:init && lighthouse http://localhost:8888 --output html --output-path ./qa/lighthouse/reports/dev_netlify_report.html --view",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
@@ -56,6 +59,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "lighthouse": "^12.5.1",
+    "netlify-cli": "^19.1.5",
     "typescript": "~5.4.2"
   }
 }

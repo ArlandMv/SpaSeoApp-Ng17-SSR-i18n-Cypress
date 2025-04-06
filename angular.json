@@ -44,7 +44,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ng17-ssr",
+            "outputPath": "dist/spaseoapp-ng17-ssr-i18n-cypress",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -54,7 +54,6 @@
               "src/favicon.ico",
               "src/assets",
               "src/_redirects",
-              "src/robots.txt",
               "src/sitemap.xml"
             ],
             "styles": [
@@ -96,10 +95,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Ng17-SSR:build:production"
+              "buildTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:build:production"
             },
             "development": {
-              "buildTarget": "Ng17-SSR:build:development"
+              "buildTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -107,7 +106,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Ng17-SSR:build"
+            "buildTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:build"
           }
         },
         "test": {
@@ -127,11 +126,11 @@
         "cypress-run": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "Ng17-SSR:serve"
+            "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Ng17-SSR:serve:production"
+              "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve:production"
             }
           }
         },
@@ -145,27 +144,27 @@
         "ct": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "Ng17-SSR:serve",
+            "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve",
             "watch": true,
             "headless": false,
             "testingType": "component"
           },
           "configurations": {
             "development": {
-              "devServerTarget": "Ng17-SSR:serve:development"
+              "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve:development"
             }
           }
         },
         "e2e": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "Ng17-SSR:serve",
+            "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve",
             "watch": true,
             "headless": false
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Ng17-SSR:serve:production"
+              "devServerTarget": "SpaSeoApp-Ng17-SSR-i18n-Cypress:serve:production"
             }
           }
         }

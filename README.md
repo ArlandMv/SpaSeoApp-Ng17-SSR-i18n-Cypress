@@ -3,6 +3,14 @@
 Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internacionalización (i18n). Facilita el desarrollo con SCSS y plantillas en línea. Garantiza calidad con Cypress, pruebas modernas y eficientes
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b103db3a-b672-4475-9710-9a81e982c79d/deploy-status)](https://app.netlify.com/sites/spa-seo-ssr/deploys)
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![Commit Activity](https://img.shields.io/github/commit-activity/m/arlandmv/SpaSeoApp-Ng17-SSR-i18n-Cypress.svg)
+
+<!--![Build Status](https://github.com/arlandmv/SpaSeoApp-Ng17-SSR-i18n-Cypress/actions/workflows/<workflow-file>/badge.svg)-->
+
+<!--
+[![Coverage Status](https://coveralls.io/repos/github/<username>/<repository>/badge.svg?branch=main)](https://coveralls.io/github/<username>/<repository>?branch=main)
+-->
 
 ---
 
@@ -82,31 +90,22 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
 
 - ⬜️ **feat:** `optimize images for SEO`
   - Compression and alt tags
-- ⬜️ **docs:** `add Lighthouse optimization to documentation`
+  - add contentfull or other netlify integration ideally for SEO
+- ⬜️ **fix:** `/robots.txt is not reachable in production`
+
+### 5️⃣ Jamstack Features feat-jamstack
+
+- ⬜️ **feat:** `implement Netlify Forms for contact/submissions`
+  - Configure form detection
+  - Handle submissions (e.g., notifications, Zapier integration)
+- ⬜️ **feat:** `utilize Netlify Edge Functions for dynamic tasks`
+  - Explore use cases (e.g., API proxy, personalization)
+  - Implement error handling and logging
+- ⬜️ **feat:** `securely call 3rd party APIs using environment variables`
+  - Store API keys/secrets in Netlify UI/netlify.toml
+  - Access secrets safely within Edge Functions or Build Plugins
 
 <!--
-Implement SEO Optimization feat/seo
-- ✅ `feat: implement SSR for improved SEO performance`
-- ✅ `feat: add structured data for Google indexing`
-- ✅ `feat: add Open Graph and Twitter meta tags`
-
-#### SEO Metadata
-- ⬜️ **feat:** `basic metadata implementation`
-  ```typescript
-  // Example: Setting basic metadata in Angular
-  this.meta.addTags([
-    { name: 'description', content: 'Professional spa services' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-  ]);
-  ```
-- ⬜️ **feat:** `add social media meta tags`
-  ```typescript
-  // Planned Open Graph/Twitter implementation
-  this.meta.addTags([
-    { property: 'og:title', content: 'Spa Services' },
-    { property: 'og:description', content: 'Book professional spa treatments' },
-    { name: 'twitter:card', content: 'summary_large_image' }
-  ]);
 
   ```
 - ⬜️ **feat:** `i18n metadata support`
