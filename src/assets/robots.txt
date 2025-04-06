@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Allow: *.js$
+Allow: *.css$
+Disallow: /admin/
+Disallow: /api/
+Disallow: /server-internal/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.map$ 
+
+# Sitemap (uncomment when available)
+Sitemap: https://spa-seo-ssr.netlify.app/sitemap.xml
+
+# Crawl rate (requests per second)
+# Crawl-delay: 10
+
+# Note: For SPAs, ensure critical routes are accessible
+# to allow proper search engine indexing

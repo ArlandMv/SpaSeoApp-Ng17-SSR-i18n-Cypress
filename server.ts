@@ -19,10 +19,22 @@ export function app(): express.Express {
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
-  // Serve static files from /browser
-  server.get('*.*', express.static(browserDistFolder, {
-    maxAge: '1y'
-  }));
+
+  server.get('/sitemap.xml', (req, res) => {
+    res.sendFile(join(browserDistFolder, 'assets', 'sitemap.xml'));
+  });
+
+  server.get('/robots.txt', (req, res) => {
+    res.sendFile(join(browserDistFolder, 'assets', 'robots.txt'));
+  });
+
+  // Serve static files from /browser (excluding files handled above)
+  server.get(
+    '*.*',
+    express.static(browserDistFolder, {
+      maxAge: '1y',
+    })
+  );
 
   // All regular routes use the Angular engine
   server.get('*', (req, res, next) => {

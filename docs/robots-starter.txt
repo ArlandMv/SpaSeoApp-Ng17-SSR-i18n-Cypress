@@ -1,0 +1,18 @@
+# Basic robots.txt for SPA with SSR
+User-agent: *
+Allow: /
+Allow: /*.js
+Allow: /*.css
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json
+Disallow: /*.xml
+
+# Sitemap location
+# Sitemap: https://spa-seo-ssr.netlify.app/sitemap.xml
+
+# Crawl delay (optional)
+# Crawl-delay: 10
+
+# Note: For SPAs, ensure critical routes are accessible
+# to allow proper search engine indexing
