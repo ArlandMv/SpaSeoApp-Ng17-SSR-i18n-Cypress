@@ -26,9 +26,10 @@ import { translateLoaderFactory } from './core/utils/utils';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { QuestionsAndAnswersComponent } from './components/questions-and-answers/questions-and-answers.component';
 import { SocialLinksComponent } from './components/social-links/social-links.component';
+import { ThankYouComponent } from './components/thank-you/thank-you.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, QuestionsAndAnswersComponent, SocialLinksComponent],
+  declarations: [AppComponent, NavComponent, QuestionsAndAnswersComponent, SocialLinksComponent, ThankYouComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

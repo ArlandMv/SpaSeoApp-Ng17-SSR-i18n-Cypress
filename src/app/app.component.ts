@@ -79,16 +79,12 @@ import { NavigationEnd, Router } from '@angular/router';
     >
       <mat-card>
         <h2>{{ 'CONTACT_SECTION_TITLE' | translate }}</h2>
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-          <!--name="contact"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"-->
-          <input type="hidden" name="form-name" value="contact" />
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" > 
           <mat-form-field>
             <mat-label>{{ 'CONTACT_LABEL_NAME' | translate }}</mat-label>
             <input
               matInput
+              name="name"
               formControlName="name"
               required
               data-cy="name-input"
@@ -109,6 +105,7 @@ import { NavigationEnd, Router } from '@angular/router';
               <mat-label>{{ 'CONTACT_LABEL_EMAIL' | translate }}</mat-label>
               <input
                 matInput
+                name="email"
                 formControlName="email"
                 type="email"
                 required
@@ -136,7 +133,7 @@ import { NavigationEnd, Router } from '@angular/router';
 
             <mat-form-field class="half-width">
               <mat-label>{{ 'CONTACT_LABEL_SERVICE' | translate }}</mat-label>
-              <mat-select formControlName="service" required>
+              <mat-select name="service" formControlName="service" required>
                 <mat-option
                   *ngFor="let option of serviceOptions"
                   [value]="option.value"
@@ -153,6 +150,7 @@ import { NavigationEnd, Router } from '@angular/router';
             }}</mat-label>
             <textarea
               matInput
+              name="message"
               formControlName="message"
               required
               data-cy="message-textarea"
@@ -169,6 +167,19 @@ import { NavigationEnd, Router } from '@angular/router';
               >{{ 'CONTACT_ERROR_PROJECT_DESCRIPTION_GUIDANCE' | translate }}
             </mat-error>
           </mat-form-field>
+
+          <!-- enctype="multipart/form-data" makes error-->
+          <input type="hidden" name="form-name" value="contact" />
+          <div style="display: none;">
+            <input type="text" name="bot-field" id="bot-field" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <!-- Example of future file input -->
+          <!--  <mat-form-field>
+                <label>Attachment</label>
+                <input type="file" name="attachment" formControlName="attachment" />
+                </mat-form-field>
+          -->
 
           <button
             mat-raised-button
@@ -388,12 +399,49 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    if (this.contactForm.valid) {
-      const formData = this.contactForm.value;
-      console.log('Form Data:', formData);
-      // Implement form submission logic here
-    }
+    // 1. Build FormData from FormGroup 
+    const formData = new FormData();
+    Object.keys(this.contactForm.value).forEach(key => {
+      formData.append(key, this.contactForm.value[key]);
+    });
+
+    // 2. Append the hidden Netlify fields
+    formData.append('form-name', 'contact');
+    const botField = document.getElementById('bot-field') as HTMLInputElement;
+    formData.append('bot-field', botField ? botField.value : '');
+    // or formData.set('bot-field', botField?.value ?? '');
+
+    // 3. Log formData for debugging
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
+
+    // 4. Include a relevant comment to explain this part of the code. 
+    fetch('/', {
+        method: 'POST',
+        //headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData
+      })
+      .then((response) => {
+        console.log('Form submission successful', response);
+        this.translate.get('CONTACT_FORM_SUCCESS').subscribe(msg => {
+          alert(msg);
+          // this.router.navigate(['/thank-you']); // TODO: Uncomment when router is implemented
+          this.contactForm.reset(); // contactForm is still "ng invalid"
+          this.contactForm.markAsPristine();
+          this.contactForm.markAsUntouched();
+        });
+      })
+      .catch(error => {
+        console.error('Form submission failed', error);
+        this.translate.get('CONTACT_FORM_ERROR').subscribe(msg => {
+          alert(`${msg}: ${error}`);
+          console.log('Error handling completed');
+        });
+      });
+    
   }
+  
   scrollTo(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -408,10 +456,41 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  //refactor
+  sendDemoRequest() {
+    const dummyData = {
+      name: "John Doe",
+      email: "john.doe@example.com",
+      service: "Consulting Services",
+      message: "This is a test message.",
+      "form-name": "contact",
+      "bot-field": ""
+    };
+    try {
+      fetch('/hooks/demo-submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dummyData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log('Success:', data);
+        });
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   onSectionClick(sectionId: string) {
-    console.log('go to:' + sectionId);
+    console.log("section click called on + " + sectionId);
     this.scrollTo(sectionId);
+    //this.sendDemoRequest();
   }
 
   ngOnDestroy(): void {
