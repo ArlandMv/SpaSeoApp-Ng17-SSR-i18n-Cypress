@@ -1,0 +1,140 @@
+---
+title: Angular SSR with Application Builder
+description: Modern SSR implementation for Angular 17+ on Netlify
+category: Performance
+globs:
+  - "src/app/app.config.ts"
+  - "server/main.ts"
+  - "netlify/functions/ssr/**/*.js"
+---
+
+# Angular 17+ SSR Implementation
+
+## Application Configuration
+
+<ProviderContext version="3.0">
+### app.config.ts
+```typescript
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideClientHydration(),
+    provideHttpClient(withFetch()),
+    provideAnimations()
+  ]
+};
+```
+
+## Server-Side Rendering
+
+<ProviderContext>
+### Express Server Setup
+```typescript
+const server = express();
+server.use(compression());
+server.use(express.static('dist/browser', {
+  maxAge: '1y',
+  immutable: true
+}));
+server.use('*', (req, res) => {
+res.render('index.html', { req });
+});
+```
+</ProviderContext>
+
+---
+
+## Netlify Optimization
+
+<ProviderContext>
+### Edge Function Handler
+```typescript
+export default async (request: Request) => {
+  const url = new URL(request.url);
+  
+  // Static file handling
+  if (url.pathname.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg)$/)) {
+    return new Response(null, { status: 404 });
+  }
+
+  // SSR handling
+  const html = await renderApplication({
+    document: indexHtml,
+    url: request.url,
+    platformProviders: [
+      { provide: 'REQUEST', useValue: request }
+    ]
+  });
+
+  return new Response(html, {
+    headers: { 'Content-Type': 'text/html' }
+  });
+};
+```
+
+### netlify.toml Configuration
+```toml
+[build]
+  command = "npm run build"
+  publish = "dist/browser"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["@angular/platform-server"]
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    Cache-Control = "public, max-age=3600"
+ ```
+```
+</ProviderContext>
+
+<ProviderContext>
+## Performance Techniques
+
+### Hydration Control
+```typescript
+provideClientHydration({
+  hydrationFeature: withNoHttpTransferCache()
+})
+```
+</ProviderContext>
+
+<ProviderContext>
+### Critical CSS Injection
+```typescript
+const criticalCSS = await extractCriticalCSS(html);
+res.send(html.replace('</head>', `<style>${criticalCSS}</style></head>`));
+```
+</ProviderContext>
+
+<ProviderContext>
+### Cache Headers
+```toml
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+```</ProviderContext>
+ 
+## Debugging Guide
+| Issue              | Solution |
+|--------------------|----------|
+| Hydration mismatch | Verify server/client component parity |
+| Memory leaks       | Check TransferState serialization |
+| Slow TTI           | Implement lazy hydration patterns |
+| 502 Errors         | Increase function timeout in netlify.toml |
+
+## Related Files
+<!-- [Express SSR Configuration](./express-ssr.mdc) -->
+- [JAMstack Guide](./jamstack-guide.mdc)
+- [Angular Performance Metrics](./angular-performance.mdc)
+- [Netlify Dev Guide](./netlify-dev.mdc) 
+
+## example Validation Checklist
+- SSR function timeout >10s in netlify.toml
+- Proper cache headers for static assets
+- Hydration mismatch checks implemented
+- Critical CSS extraction configured

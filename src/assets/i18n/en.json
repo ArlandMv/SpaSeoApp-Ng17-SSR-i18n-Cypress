@@ -55,6 +55,8 @@
   "CONTACT_ERROR_SERVICE_REQUIRED": "Service is required",
   "CONTACT_ERROR_MESSAGE_REQUIRED": "Message is required",
   "CONTACT_ERROR_PROJECT_DESCRIPTION_GUIDANCE": "Please provide a brief description of your project. Include details about your goals, desired features, any specific technologies you prefer, and your timeline.",
+  "CONTACT_FORM_SUCCESS": "Thank you! Your message has been sent successfully.",
+  "CONTACT_FORM_ERROR": "There was an error submitting your form. Please try again later.",
 
   "FOOTER_COPYRIGHT": "Arland Michelena Villegas. All rights reserved."
 }

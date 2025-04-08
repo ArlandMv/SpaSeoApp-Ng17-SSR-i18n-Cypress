@@ -9,7 +9,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr": "node dist/ng17-ssr/server/server.mjs",
+    "serve:ssr": "node dist/spaseoapp-ng17-ssr-i18n-cypress/server/server.mjs",
     "serve:ssr:full": "npm run build && npm run serve:ssr",
     "lh:init": "if not exist qa\\lighthouse\\reports (mkdir qa\\lighthouse\\reports) else (echo DIRECTORY EXISTS: qa\\lighthouse\\reports)",
     "lh:prod": "npm run lh:init && lighthouse https://spa-seo-ssr.netlify.app/ --output html --output-path ./qa/lighthouse/reports/prod_report.html --view",

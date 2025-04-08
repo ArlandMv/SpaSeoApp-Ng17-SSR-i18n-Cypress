@@ -44,6 +44,11 @@ describe('Contact Form Validation', () => {
     cy.get('[formControlName="name"]').type('Test Name');
     cy.get('[formControlName="email"]').type('test@example.com');
     cy.get('[formControlName="message"]').type('Test message');
+
+    // TODO: [Enhancement] Consider adding more comprehensive tests for submit button disabled state
+    // Could verify button remains disabled for various invalid form states (empty fields, invalid email, etc)
+    // Currently covered by Angular's form validation, so lower priority
+    
     
     // cy.intercept('POST', '/api/contact', { statusCode: 200 }).as('submitForm'); 
     cy.get('[data-cy="contact-submit-button"]')

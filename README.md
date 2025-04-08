@@ -49,7 +49,7 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
   - Screenshot Comparisons
 - ⬜️ **refactor:** `update tests to follow AAA-patern`
 
-### 3️⃣ Jamstack with Netlify feat/ssr-deployment
+### 3️⃣ Deployment with Netlify feat/ssr-deployment
 
 - ✅ **docs:** `add investigation documents`
   - CMS comparison report
@@ -91,19 +91,23 @@ Optimiza el rendimiento de una SPA con SSR en Angular 17. Mejora SEO e internaci
 - ⬜️ **feat:** `optimize images for SEO`
   - Compression and alt tags
   - add contentfull or other netlify integration ideally for SEO
-- ⬜️ **fix:** `/robots.txt is not reachable in production`
+- ⬜️ **fix:** `solve SEO fix list`
 
 ### 5️⃣ Jamstack Features feat-jamstack
 
-- ⬜️ **feat:** `implement Netlify Forms for contact/submissions`
-  - Configure form detection
-  - Handle submissions (e.g., notifications, Zapier integration)
+- ✅ **fix:** `Netlify SSR file handling for SEO`
+- ✅ **----feat:** `implement Netlify Forms for submissions`
+  - Configure form detection 
+  - integration test with netlify-form-integration.cy.ts
+  - WIP:Handle submissions integration eg: notifications/Zapier/etc 
+- ⬜️ **docs** `add md context files for llm assistants`
+- ⬜️ **Form-triggered functions** `utilize Netlify for integrations` 
 - ⬜️ **feat:** `utilize Netlify Edge Functions for dynamic tasks`
   - Explore use cases (e.g., API proxy, personalization)
   - Implement error handling and logging
 - ⬜️ **feat:** `securely call 3rd party APIs using environment variables`
   - Store API keys/secrets in Netlify UI/netlify.toml
-  - Access secrets safely within Edge Functions or Build Plugins
+  - Access secrets safely within Edge Functions or Build Plugins 
 
 <!--
 

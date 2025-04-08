@@ -1,0 +1,73 @@
+---
+title: Netlify Platform Features Summary
+description: Comprehensive overview of Netlify's core capabilities and best practices
+category: Infrastructure
+---
+
+# Netlify Platform Features
+
+## Core Services
+
+### Compute Systems
+1. **Serverless Functions**
+   - Node.js runtime
+   - Request/response model
+   - Default directory: `netlify/functions`
+
+2. **Edge Functions**  
+   - Deno runtime
+   - Low-latency request processing
+   - Default directory: `netlify/edge-functions`
+
+3. **Background Functions**
+   - Async processing (15min timeout)
+   - Requires `-background` suffix
+
+4. **Scheduled Functions**
+   - CRON-based execution
+   - 30-second runtime limit
+
+### Storage
+- **Netlify Blobs**
+  - Key-value object storage
+  - 5GB max object size
+  - Global and deploy-scoped stores
+
+### Media Processing
+- **Image CDN**
+  - On-demand transformations
+  - Supports multiple formats (WebP, AVIF etc.)
+  - Edge caching
+
+## Key Patterns
+
+### Configuration
+- Prefer `netlify.toml` for:
+  - Function directories
+  - Environment variables
+  - Image CDN remote sources
+  - Edge function ordering
+
+### Development
+- Use `netlify dev` for local testing
+- Environment variables hierarchy:
+  1. `netlify.toml` 
+  2. UI/CLI settings
+  3. Shared variables
+
+### Security
+- Never commit secrets in code
+- Use Netlify UI for sensitive vars
+- Isolate production data in global stores
+
+## Implementation Guides
+
+### [Functions Examples](./netlify-dev.mdc#examples-of-the-latest-serverless-function-or-function-structures)
+### [Blobs API Reference](./netlify-dev.mdc#netlify-blobs-api)
+### [Image CDN Usage](./netlify-dev.mdc#example-transformations)
+
+## Best Practices
+- Follow naming conventions
+- Use TypeScript where possible
+- Isolate test/prod data
+- Prefer modern ES modules (.mts)

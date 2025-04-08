@@ -51,6 +51,8 @@
   "CONTACT_ERROR_SERVICE_REQUIRED": "El servicio es obligatorio",
   "CONTACT_ERROR_MESSAGE_REQUIRED": "El mensaje es obligatorio",
   "CONTACT_ERROR_PROJECT_DESCRIPTION_GUIDANCE": "Por favor, proporciona una breve descripción de tu proyecto. Incluye detalles sobre tus objetivos, las funcionalidades deseadas, cualquier tecnología específica que prefieras y tu cronograma.",
+  "CONTACT_FORM_SUCCESS": "¡Gracias! Tu mensaje ha sido enviado correctamente.",
+  "CONTACT_FORM_ERROR": "Hubo un error al enviar tu formulario. Por favor, inténtalo de nuevo más tarde.",
 
   "FOOTER_COPYRIGHT": "Arland Michelena Villegas. Todos los derechos reservados."
 }

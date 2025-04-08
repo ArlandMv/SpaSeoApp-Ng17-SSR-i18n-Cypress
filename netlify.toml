@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "dist/ng17-ssr/browser"
+  publish = "dist/spaseoapp-ng17-ssr-i18n-cypress/browser"
   functions = "netlify/functions"
 
 [dev]
@@ -18,6 +18,12 @@
 [[redirects]]
   from = "/sitemap.xml"
   to = "/sitemap.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/thank-you"
+  to = "/thank-you"
   status = 200
   force = true
 
