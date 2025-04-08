@@ -1,0 +1,80 @@
+---
+title: JAMstack MDC Documentation Guide
+description: Comprehensive guide to Markdown Context files for Angular + Express SSR on Netlify
+category: Documentation
+globs:
+  - "src/app/**/*.ts"
+  - "server/**/*.js"
+  - "netlify/**/*.toml"
+---
+
+# JAMstack MDC Implementation
+
+## 1-Project Architecture
+
+<ProviderContext version="1.3">
+### Core Components
+```mermaid
+graph TD
+    A[Angular Frontend] --> B[Express SSR]
+    B --> C[Netlify Functions]
+    C --> D[Edge Network]
+```
+
+## 2-Angular-Specific Contexts
+### Component Documentation
+```typescript
+@Component({
+  selector: 'app-ssr-wrapper',
+  template: ` `,
+  // ... existing code ...
+})
+export class SsrWrapperComponent implements OnInit {
+  @Input() serverData: any;
+}
+```
+
+## 3-Express SSR Integration
+### Server Configuration
+```javascript
+// ... existing code ...
+server.engine('html', ngExpressEngine({
+  bootstrap: AppServerModule,
+  providers: [
+    provideClientHydration()
+  ]
+}));
+// ... existing code ...
+```
+
+## 4-Netlify Deployment
+### Function Configuration
+```toml
+[build]
+  command = "npm run build:ssr"
+  publish = "dist/browser"
+  functions = "netlify/functions"
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+Cache-Control = "public, max-age=3600"
+
+### CI/CD Pipeline
+```yaml
+- name: Build and Deploy
+  run: |
+    npm run build:ssr
+    netlify deploy --prod
+ ```
+
+## Best Practices
+1. Component Documentation :
+   
+   - Include Angular component metadata
+   - Document SSR-specific properties
+2. API Contracts :
+   
+   - Document Express route handlers
+   - Include example payloads
+3. Deployment :

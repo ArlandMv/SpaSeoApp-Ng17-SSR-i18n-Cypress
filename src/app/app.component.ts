@@ -6,8 +6,14 @@ import {
   PLATFORM_ID,
   AfterViewInit,
   OnDestroy,
+  ViewChild,
 } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormGroupDirective,
+} from '@angular/forms';
 import { SeoService } from './core/services/seo.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NavigationEnd, Router } from '@angular/router';
@@ -79,16 +85,19 @@ import { NavigationEnd, Router } from '@angular/router';
     >
       <mat-card>
         <h2>{{ 'CONTACT_SECTION_TITLE' | translate }}</h2>
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-          <!--name="contact"
+        <form
+          [formGroup]="contactForm"
+          (ngSubmit)="onSubmit()"
+          name="contact"
           method="POST"
           data-netlify="true"
-          netlify-honeypot="bot-field"-->
-          <input type="hidden" name="form-name" value="contact" />
+          netlify-honeypot="bot-field"
+        >
           <mat-form-field>
             <mat-label>{{ 'CONTACT_LABEL_NAME' | translate }}</mat-label>
             <input
               matInput
+              name="name"
               formControlName="name"
               required
               data-cy="name-input"
@@ -109,6 +118,7 @@ import { NavigationEnd, Router } from '@angular/router';
               <mat-label>{{ 'CONTACT_LABEL_EMAIL' | translate }}</mat-label>
               <input
                 matInput
+                name="email"
                 formControlName="email"
                 type="email"
                 required
@@ -136,7 +146,7 @@ import { NavigationEnd, Router } from '@angular/router';
 
             <mat-form-field class="half-width">
               <mat-label>{{ 'CONTACT_LABEL_SERVICE' | translate }}</mat-label>
-              <mat-select formControlName="service" required>
+              <mat-select name="service" formControlName="service" required>
                 <mat-option
                   *ngFor="let option of serviceOptions"
                   [value]="option.value"
@@ -153,6 +163,7 @@ import { NavigationEnd, Router } from '@angular/router';
             }}</mat-label>
             <textarea
               matInput
+              name="message"
               formControlName="message"
               required
               data-cy="message-textarea"
@@ -169,6 +180,25 @@ import { NavigationEnd, Router } from '@angular/router';
               >{{ 'CONTACT_ERROR_PROJECT_DESCRIPTION_GUIDANCE' | translate }}
             </mat-error>
           </mat-form-field>
+
+          <!-- enctype="multipart/form-data" makes error-->
+          <input type="hidden" name="form-name" value="contact" />
+          <div style="display: none;">
+            <input
+              type="text"
+              name="bot-field"
+              id="bot-field"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <!-- Example of future file input -->
+          <!--  <mat-form-field>
+                <label>Attachment</label>
+                <input type="file" name="attachment" formControlName="attachment" />
+                </mat-form-field>
+          -->
 
           <button
             mat-raised-button
@@ -220,6 +250,8 @@ import { NavigationEnd, Router } from '@angular/router';
       .hero-section {
         text-align: center;
         padding: 50px 20px;
+        /*Make hero take more space */
+        /* min-height: 80vh;*/
       }
       .hero .content {
         max-width: 800px;
@@ -231,6 +263,9 @@ import { NavigationEnd, Router } from '@angular/router';
         justify-content: center;
         gap: 20px;
         padding: 20px;
+        /*padding: 40px 20px;  Increased padding */
+        /*min-height: 60vh;  Give section some minimum height */
+        /*align-items: center;  Center cards vertically if space allows */
       }
       .services-section {
         background: linear-gradient(to bottom, #f5f5f5, #e0d0ff);
@@ -239,12 +274,18 @@ import { NavigationEnd, Router } from '@angular/router';
         width: 300px;
         text-align: center;
         padding: 20px;
+        /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  Add subtle shadow */
+        /*transition: transform 0.3s ease;  Add hover effect */
       }
+      /* mat-card:hover {
+        transform: translateY(-5px); Lift card on hover 
+      }*/
       footer {
         text-align: center;
         padding: 20px;
         background-color: #3f51b5;
         color: white;
+        /*margin-top: 40px;  Add space before footer */
       }
       .about-section {
         display: flex;
@@ -253,6 +294,7 @@ import { NavigationEnd, Router } from '@angular/router';
         min-height: 300px;
         background: linear-gradient(to bottom, #e0d0ff, #d0f0ff);
         padding: 20px;
+        /* padding: 40px 20px; Increased padding */
       }
       .about-section mat-card {
         width: 100%;
@@ -263,18 +305,30 @@ import { NavigationEnd, Router } from '@angular/router';
         margin-top: 0;
         margin-bottom: 20px;
         font-size: 2rem;
+        color: #3f51b5; /* Use theme color */
       }
       .why-choose-me-section {
-        margin-top: 20px;
+        margin-top: 30px; /* Increased spacing */
       }
-
+      .why-choose-me-section h3 {
+        color: #3f51b5; /* Use theme color */
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+      }
       .why-choose-me-section ul {
         list-style-type: disc;
         margin-left: 20px;
+        /* padding-left: 10px; Adjust padding */
       }
+      .why-choose-me-section li {
+        margin-bottom: 10px; /* Space out list items */
+        line-height: 1.6;
+      }
+
       .about-me-text {
         margin-top: 0;
-        margin-bottom: 10px;
+        margin-bottom: 15px; /* Increased spacing */
         font-size: 1.1rem;
         line-height: 1.6;
         color: #333;
@@ -285,41 +339,101 @@ import { NavigationEnd, Router } from '@angular/router';
         align-items: center;
         padding: 40px 20px;
         background: linear-gradient(to bottom, #d0f0ff, #3f51b5);
+        /*background: linear-gradient(
+          to bottom,
+          #d0f0ff,
+          #f0f0f0
+        );  Adjusted gradient */
+        min-height: 80vh; /* Ensure it takes significant space */
       }
+
       .contact-section mat-card {
         width: 100%;
         max-width: 600px;
-        padding: 30px;
+        padding: 18px;
         border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
       }
       .contact-section form {
         display: flex;
         flex-direction: column;
+        flex-grow: 1;
       }
       .contact-section mat-form-field {
-        margin-bottom: 20px;
-      }
-      .contact-section form mat-form-field:nth-child(3) {
-        min-height: 300px;
-        max-height: 600px;
-        overflow: auto;
+        margin-bottom: 8px;
+        width: 100%;
       }
 
+      /* 1. Target the mat-form-field */
+      //.contact-section form mat-form-field:nth-child(3) {
+      .contact-section mat-form-field:has(textarea[formControlName='message']) {
+        flex-grow: 1;
+        display: flex;
+        min-height: 300px;
+        flex-direction: column;
+      }
+
+      /* 2. Target the INNER wrapper*/
+      .contact-section
+        mat-form-field:has(textarea[formControlName='message'])
+        .mat-mdc-form-field-flex {
+        flex-grow: 1;
+        display: flex;
+        min-height: 0;
+      }
+
+      /* 3. Style the textarea itself */
+      .contact-section textarea[matInput] {
+        height: 100%;
+        box-sizing: border-box; /* Include padding/border */
+        min-height: 10lh;
+        overflow: auto;
+      }
       .two-fields-container {
         display: flex;
         flex-direction: row;
-        gap: 20px;
+        gap: 8px 8px;
       }
       .two-fields-container mat-form-field {
         flex-grow: 1;
-        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
       }
       .contact-section button[mat-raised-button] {
         background-color: #3f51b5;
         color: white;
-        padding: 10px 20px;
-        margin-bottom: 20px;
+        padding: 8px 24px;
+        margin-bottom: 16px;
         border-radius: 4px;
+      }
+
+      /* --- Media Query for Small Screens --- */
+      @media (max-width: 599px) {
+        .contact-section {
+          padding: 20px 10px; /* Reduce overall section padding */
+        }
+
+        .contact-section mat-card {
+          padding: 15px; /* Reduce card padding */
+        }
+
+        .contact-section mat-form-field {
+          margin-bottom: 10px; /* Reduce vertical spacing */
+        }
+
+        .two-fields-container {
+          gap: 10px; /* Reduce horizontal gap */
+          /* Optional: Stack them if needed */
+          /* flex-direction: column; */
+        }
+
+        /* Optional: If stacking .two-fields-container */
+        /* .two-fields-container mat-form-field {
+             margin-bottom: 10px;
+         } */
       }
     `,
   ],
@@ -330,11 +444,15 @@ export class AppComponent implements OnInit, OnDestroy {
   private seoService = inject(SeoService);
   contactForm: FormGroup = this.fb.group({});
   router = inject(Router);
-  //plataformId: any = inject(PLATFORM_ID)
+  //plataformId: any = inject(PLATFORM_ID) //compare stats
 
+  // '!' for definite assignment assertion or check in onSubmit
+  @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
   isBrowser: boolean;
   currentLang: string | undefined;
   year: number | undefined;
+  //compare stats-> year: number = new Date().getFullYear();
+
   serviceOptions = [
     {
       value: 'Front-End Landing Page Service',
@@ -362,7 +480,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('ngOnInit called');
-    this.year = new Date().getFullYear();
+    this.year = new Date().getFullYear(); //compare stats vs in
     this.seoService.updateTags({
       titleKey: 'META_HOME_TITLE',
       descriptionKey: 'META_HOME_DESCRIPTION',
@@ -376,7 +494,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      // TODO: refactor strings out of ts files, use variables always.
       service: ['First Time Free Consultation Services', Validators.required],
+      //service: [this.defaultServiceValue, Validators.required],
       message: ['', Validators.required],
     });
   }
@@ -388,12 +508,53 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    if (this.contactForm.valid) {
-      const formData = this.contactForm.value;
-      console.log('Form Data:', formData);
-      // Implement form submission logic here
-    }
+    // 1. Build FormData from FormGroup
+    const formData = new FormData();
+    Object.keys(this.contactForm.value).forEach((key) => {
+      formData.append(key, this.contactForm.value[key]);
+    });
+
+    // 2. Append the hidden Netlify fields
+    formData.append('form-name', 'contact');
+    const botField = document.getElementById('bot-field') as HTMLInputElement;
+    formData.append('bot-field', botField ? botField.value : '');
+    // or formData.set('bot-field', botField?.value ?? '');
+
+    // 3. Log formData for debugging
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
+
+    // 4. Include a relevant comment to explain this part of the code.
+    fetch('/', {
+      method: 'POST',
+      //headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData,
+    })
+      .then((response) => {
+        /*if (!response.ok) {
+          return response.text().then((text) => {
+            throw new Error(
+              `Form submission failed: ${response.status} ${response.statusText} - ${text}`
+            );
+          });
+        }*/
+        console.log('Form submission successful', response);
+        this.formDirective.resetForm();
+        this.translate.get('CONTACT_FORM_SUCCESS').subscribe((msg) => {
+          alert(msg);
+          // this.router.navigate(['/thank-you']); // TODO: Uncomment when router is implemented
+        });
+      })
+      .catch((error) => {
+        console.error('Form submission failed', error);
+        this.translate.get('CONTACT_FORM_ERROR').subscribe((msg) => {
+          alert(`${msg}: ${error}`);
+          console.log('Error handling completed');
+        });
+      });
   }
+
   scrollTo(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -408,10 +569,41 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  //refactor
+  sendDemoRequest() {
+    const dummyData = {
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+      service: 'Consulting Services',
+      message: 'This is a test message.',
+      'form-name': 'contact',
+      'bot-field': '',
+    };
+    try {
+      fetch('/hooks/demo-submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dummyData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log('Success:', data);
+        });
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   onSectionClick(sectionId: string) {
-    console.log('go to:' + sectionId);
+    console.log('section click called on + ' + sectionId);
     this.scrollTo(sectionId);
+    //this.sendDemoRequest();
   }
 
   ngOnDestroy(): void {
