@@ -6,13 +6,13 @@ import {
   PLATFORM_ID,
   AfterViewInit,
   OnDestroy,
-  ViewChild,
+  ViewChild, 
 } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
-  FormGroupDirective,
+  FormGroupDirective, 
 } from '@angular/forms';
 import { SeoService } from './core/services/seo.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -97,7 +97,7 @@ import { NavigationEnd, Router } from '@angular/router';
             <mat-label>{{ 'CONTACT_LABEL_NAME' | translate }}</mat-label>
             <input
               matInput
-              name="name"
+              name="name" 
               formControlName="name"
               required
               data-cy="name-input"
@@ -197,7 +197,7 @@ import { NavigationEnd, Router } from '@angular/router';
           <!--  <mat-form-field>
                 <label>Attachment</label>
                 <input type="file" name="attachment" formControlName="attachment" />
-                </mat-form-field>
+                </mat-form-field> 
           -->
 
           <button
@@ -251,7 +251,7 @@ import { NavigationEnd, Router } from '@angular/router';
         text-align: center;
         padding: 50px 20px;
         /*Make hero take more space */
-        /* min-height: 80vh;*/
+        /* min-height: 80vh;*/ 
       }
       .hero .content {
         max-width: 800px;
@@ -265,7 +265,7 @@ import { NavigationEnd, Router } from '@angular/router';
         padding: 20px;
         /*padding: 40px 20px;  Increased padding */
         /*min-height: 60vh;  Give section some minimum height */
-        /*align-items: center;  Center cards vertically if space allows */
+        /*align-items: center;  Center cards vertically if space allows */ 
       }
       .services-section {
         background: linear-gradient(to bottom, #f5f5f5, #e0d0ff);
@@ -275,9 +275,9 @@ import { NavigationEnd, Router } from '@angular/router';
         text-align: center;
         padding: 20px;
         /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  Add subtle shadow */
-        /*transition: transform 0.3s ease;  Add hover effect */
+        /*transition: transform 0.3s ease;  Add hover effect */ 
       }
-      /* mat-card:hover {
+      /* mat-card:hover { 
         transform: translateY(-5px); Lift card on hover 
       }*/
       footer {
@@ -285,7 +285,7 @@ import { NavigationEnd, Router } from '@angular/router';
         padding: 20px;
         background-color: #3f51b5;
         color: white;
-        /*margin-top: 40px;  Add space before footer */
+        /*margin-top: 40px;  Add space before footer */ 
       }
       .about-section {
         display: flex;
@@ -294,7 +294,7 @@ import { NavigationEnd, Router } from '@angular/router';
         min-height: 300px;
         background: linear-gradient(to bottom, #e0d0ff, #d0f0ff);
         padding: 20px;
-        /* padding: 40px 20px; Increased padding */
+        /* padding: 40px 20px; Increased padding */ 
       }
       .about-section mat-card {
         width: 100%;
@@ -305,13 +305,13 @@ import { NavigationEnd, Router } from '@angular/router';
         margin-top: 0;
         margin-bottom: 20px;
         font-size: 2rem;
-        color: #3f51b5; /* Use theme color */
+        color: #3f51b5; /* Use theme color */ 
       }
       .why-choose-me-section {
         margin-top: 30px; /* Increased spacing */
       }
       .why-choose-me-section h3 {
-        color: #3f51b5; /* Use theme color */
+        color: #3f51b5; /* Use theme color */ 
         margin-top: 0;
         margin-bottom: 10px;
         font-size: 1.2rem;
@@ -322,13 +322,13 @@ import { NavigationEnd, Router } from '@angular/router';
         /* padding-left: 10px; Adjust padding */
       }
       .why-choose-me-section li {
-        margin-bottom: 10px; /* Space out list items */
+        margin-bottom: 10px; /* Space out list items */ 
         line-height: 1.6;
       }
 
       .about-me-text {
         margin-top: 0;
-        margin-bottom: 15px; /* Increased spacing */
+        margin-bottom: 15px; /* Increased spacing */ 
         font-size: 1.1rem;
         line-height: 1.6;
         color: #333;
@@ -342,28 +342,28 @@ import { NavigationEnd, Router } from '@angular/router';
         /*background: linear-gradient(
           to bottom,
           #d0f0ff,
-          #f0f0f0
+          #f0f0f0 
         );  Adjusted gradient */
         min-height: 80vh; /* Ensure it takes significant space */
       }
-
+ 
       .contact-section mat-card {
         width: 100%;
         max-width: 600px;
         padding: 18px;
         border-radius: 8px;
-        display: flex;
+        display: flex; 
         flex-direction: column;
         box-sizing: border-box;
       }
       .contact-section form {
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
+        flex-grow: 1; 
       }
       .contact-section mat-form-field {
         margin-bottom: 8px;
-        width: 100%;
+        width: 100%; 
       }
 
       /* 1. Target the mat-form-field */
@@ -372,7 +372,7 @@ import { NavigationEnd, Router } from '@angular/router';
         flex-grow: 1;
         display: flex;
         min-height: 300px;
-        flex-direction: column;
+        flex-direction: column; 
       }
 
       /* 2. Target the INNER wrapper*/
@@ -388,31 +388,31 @@ import { NavigationEnd, Router } from '@angular/router';
       .contact-section textarea[matInput] {
         height: 100%;
         box-sizing: border-box; /* Include padding/border */
-        min-height: 10lh;
+        min-height: 10lh; 
         overflow: auto;
       }
       .two-fields-container {
         display: flex;
         flex-direction: row;
-        gap: 8px 8px;
+        gap: 8px 8px; 
       }
       .two-fields-container mat-form-field {
         flex-grow: 1;
-        display: flex;
+        display: flex; 
         flex-direction: column;
         margin-bottom: 16px;
       }
       .contact-section button[mat-raised-button] {
         background-color: #3f51b5;
         color: white;
-        padding: 8px 24px;
+        padding: 8px 24px; 
         margin-bottom: 16px;
         border-radius: 4px;
       }
 
       /* --- Media Query for Small Screens --- */
       @media (max-width: 599px) {
-        .contact-section {
+        .contact-section { 
           padding: 20px 10px; /* Reduce overall section padding */
         }
 
@@ -425,7 +425,7 @@ import { NavigationEnd, Router } from '@angular/router';
         }
 
         .two-fields-container {
-          gap: 10px; /* Reduce horizontal gap */
+          gap: 10px; /* Reduce horizontal gap */ 
           /* Optional: Stack them if needed */
           /* flex-direction: column; */
         }
@@ -446,12 +446,12 @@ export class AppComponent implements OnInit, OnDestroy {
   router = inject(Router);
   //plataformId: any = inject(PLATFORM_ID) //compare stats
 
-  // '!' for definite assignment assertion or check in onSubmit
+  // '!' for definite assignment assertion or check in onSubmit 
   @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
   isBrowser: boolean;
   currentLang: string | undefined;
   year: number | undefined;
-  //compare stats-> year: number = new Date().getFullYear();
+  //compare stats-> year: number = new Date().getFullYear(); 
 
   serviceOptions = [
     {
@@ -480,7 +480,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('ngOnInit called');
-    this.year = new Date().getFullYear(); //compare stats vs in
+    this.year = new Date().getFullYear(); //compare stats vs in 
     this.seoService.updateTags({
       titleKey: 'META_HOME_TITLE',
       descriptionKey: 'META_HOME_DESCRIPTION',
@@ -494,9 +494,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      // TODO: refactor strings out of ts files, use variables always.
+      // TODO: refactor strings out of ts files, use variables always. 
       service: ['First Time Free Consultation Services', Validators.required],
-      //service: [this.defaultServiceValue, Validators.required],
+      //service: [this.defaultServiceValue, Validators.required], 
       message: ['', Validators.required],
     });
   }
@@ -508,7 +508,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    // 1. Build FormData from FormGroup
+    // 1. Build FormData from FormGroup 
     const formData = new FormData();
     Object.keys(this.contactForm.value).forEach((key) => {
       formData.append(key, this.contactForm.value[key]);
@@ -537,7 +537,7 @@ export class AppComponent implements OnInit, OnDestroy {
             throw new Error(
               `Form submission failed: ${response.status} ${response.statusText} - ${text}`
             );
-          });
+          }); 
         }*/
         console.log('Form submission successful', response);
         this.formDirective.resetForm();
@@ -597,13 +597,12 @@ export class AppComponent implements OnInit, OnDestroy {
         });
     } catch (error) {
       console.error('Error:', error);
-    }
+    } 
   }
 
   onSectionClick(sectionId: string) {
-    console.log('section click called on + ' + sectionId);
+    console.log('section click called on + ' + sectionId); 
     this.scrollTo(sectionId);
-    //this.sendDemoRequest();
   }
 
   ngOnDestroy(): void {
